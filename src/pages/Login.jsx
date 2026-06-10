@@ -137,13 +137,13 @@ useEffect(() => {
             {/* Options */}
             <div className="flex items-center justify-between text-sm">
 
-              <label className="flex items-center gap-2 text-slate-300">
+              {/* <label className="flex items-center gap-2 text-slate-300">
                 <input
                   type="checkbox"
                   className="accent-blue-600"
                 />
                 Remember me
-              </label>
+              </label> */}
 
               <button
                 type="button"
