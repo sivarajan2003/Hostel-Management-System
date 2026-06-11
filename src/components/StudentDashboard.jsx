@@ -147,7 +147,7 @@ const filteredResidents = residents.filter((resident) => {
 });
 
 return (
-    <div className="p-8 bg-slate-50 min-h-screen">
+   <div className="p-4 md:p-8 bg-slate-50 min-h-screen">
 
       {/* Header */}
       <div className="mb-8">
@@ -167,12 +167,15 @@ return (
           <div className="flex justify-between">
             <div>
               <p className="text-slate-500">Total Residents</p>
-              <h2 className="text-4xl font-bold mt-2">248</h2>
+              <h2 className="text-3xl font-bold mt-2">248</h2>
             </div>
 
-            <div className="bg-blue-100 p-4 rounded-2xl">
-              <Users className="text-blue-600" size={30} />
-            </div>
+           <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+  <Users size={22} className="
+    text-blue-600
+    animate-bounce
+  " />
+</div>
           </div>
         </div>
 
@@ -180,12 +183,20 @@ return (
           <div className="flex justify-between">
             <div>
               <p className="text-slate-500">Checked In Today</p>
-              <h2 className="text-4xl font-bold mt-2">12</h2>
+              <h2 className="text-3xl font-bold mt-2">12</h2>
             </div>
 
-            <div className="bg-green-100 p-4 rounded-2xl">
-              <UserPlus className="text-green-600" size={30} />
-            </div>
+            {/* <div className="bg-blue-100 p-3 rounded-2xl">
+             
+            </div> */}
+            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+  <UserPlus size={28}
+  className="
+    text-green-600
+    animate-bounce
+  "
+/>
+</div>
           </div>
         </div>
 
@@ -193,12 +204,20 @@ return (
           <div className="flex justify-between">
             <div>
               <p className="text-slate-500">Vacant Rooms</p>
-              <h2 className="text-4xl font-bold mt-2">14</h2>
+              <h2 className="text-3xl font-bold mt-2">14</h2>
             </div>
 
-            <div className="bg-purple-100 p-4 rounded-2xl">
-              <BedDouble className="text-purple-600" size={30} />
-            </div>
+            {/* <div className="bg-blue-100 p-3 rounded-2xl">
+             
+            </div> */}
+              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+   <BedDouble size={28}
+  className="
+    text-red-600
+    animate-bounce
+  "
+/>
+</div>
           </div>
         </div>
 
@@ -206,12 +225,20 @@ return (
           <div className="flex justify-between">
             <div>
               <p className="text-slate-500">Pending Payments</p>
-              <h2 className="text-4xl font-bold mt-2">8</h2>
+              <h2 className="text-3xl font-bold mt-2">8</h2>
             </div>
 
-            <div className="bg-red-100 p-4 rounded-2xl">
-              <AlertCircle className="text-red-600" size={30} />
-            </div>
+         {/* <div className="bg-blue-100 p-3 rounded-2xl">
+              
+            </div> */}
+             <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+  <AlertCircle size={28}
+  className="
+    text-orange-600
+    animate-bounce
+  "
+/>
+</div>
           </div>
         </div>
 
@@ -402,7 +429,7 @@ return (
         </div>
 
         {/* Resident Table */}
-        <div className="mt-8 overflow-x-auto">
+       <div className="hidden md:block mt-8 overflow-x-auto">
 
          <table className="w-full">
 
@@ -534,6 +561,103 @@ return (
           </table>
 
         </div>
+        <div className="md:hidden mt-6 space-y-4">
+
+  {filteredResidents.map((resident) => (
+
+    <div
+      key={resident.id}
+      className="bg-white border rounded-2xl p-4 shadow-sm"
+    >
+
+      <div className="flex items-center gap-3 mb-4">
+
+        <img
+          src="https://i.pravatar.cc/40"
+          className="w-14 h-14 rounded-full"
+        />
+
+        <div>
+          <h3 className="font-bold">
+            {resident.name}
+          </h3>
+
+          <p className="text-sm text-slate-500">
+            RES{resident.id}
+          </p>
+        </div>
+
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 text-sm">
+
+        <p>
+          <strong>Room:</strong> {resident.room}
+        </p>
+
+        <p>
+          <strong>Bed:</strong> {resident.bed}
+        </p>
+
+        <p>
+          <strong>Age:</strong> {resident.age}
+        </p>
+
+        <p>
+          <strong>Gender:</strong> {resident.gender}
+        </p>
+
+        <p>
+          <strong>Phone:</strong> {resident.phone}
+        </p>
+
+        <p>
+          <strong>Rent:</strong> ₹{resident.rent}
+        </p>
+
+      </div>
+
+      <div className="flex justify-between mt-4">
+
+        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+          {resident.status}
+        </span>
+
+        <div className="flex gap-3">
+
+          <Eye
+            size={18}
+            className="cursor-pointer"
+            onClick={() => {
+              setSelectedResident(resident);
+              setShowViewModal(true);
+            }}
+          />
+
+          <Edit
+            size={18}
+            className="cursor-pointer"
+            onClick={() => {
+              setSelectedResident(resident);
+              setFormData(resident);
+              setShowEditModal(true);
+            }}
+          />
+
+          <Trash2
+            size={18}
+            className="cursor-pointer text-red-600"
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+  ))}
+
+</div>
 </>
 )}
       </div>

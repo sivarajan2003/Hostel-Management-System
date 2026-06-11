@@ -200,7 +200,7 @@ export default function ResidentsManagement({
 
       {/* Desktop Table */}
 
-      <div className="hidden lg:block bg-white rounded-3xl shadow overflow-hidden">
+ <div className="hidden md:block bg-white rounded-3xl shadow overflow-hidden">
 
         <table className="w-full table-fixed">
 
@@ -314,7 +314,7 @@ export default function ResidentsManagement({
 
       {/* Mobile Cards */}
 
-      <div className="lg:hidden space-y-4">
+      <div className="md:hidden space-y-4">
 
         {filteredResidents.map(
           (resident) => (

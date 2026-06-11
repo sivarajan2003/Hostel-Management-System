@@ -6,9 +6,9 @@ export default function FoodReviewForm() {
 
 
 const [reviewData, setReviewData] = useState({
-  studentName: "",
-  className: "",
-  section: "",
+  residentName: "",
+  roomNo: "",
+  foodType: "",
   review: "",
 });
 
@@ -41,86 +41,82 @@ const handleSubmit = () => {
   }, 3000);
 };
   return (
-    <div className="bg-white rounded-3xl shadow-sm p-8 mt-8">
+   <div className="bg-white rounded-3xl shadow-sm p-4 md:p-6 lg:p-8 mt-8">
 
       <h2 className="text-2xl font-bold mb-6">
-        Student Food Review
+         Food Reviews
       </h2>
 {successMessage && (
   <div className="mb-5 bg-green-100 text-green-700 border border-green-300 p-4 rounded-xl">
     {successMessage}
   </div>
 )}
-      <div className="grid md:grid-cols-2 gap-5">
+     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         {/* Student Name */}
         <div>
-          <label className="block mb-2 font-medium">
-            Student Name
-          </label>
+  <label className="block mb-2 font-medium">
+    Resident Name
+  </label>
 
-          <input
-  type="text"
-  value={reviewData.studentName}
-  onChange={(e) =>
-    setReviewData({
-      ...reviewData,
-      studentName: e.target.value,
-    })
-  }
-  placeholder="Enter Student Name"
-  className="w-full border border-slate-300 rounded-xl px-4 py-3"
-/>
-        </div>
+  <input
+    type="text"
+    value={reviewData.residentName}
+    onChange={(e) =>
+      setReviewData({
+        ...reviewData,
+        residentName: e.target.value,
+      })
+    }
+    placeholder="Enter Resident Name"
+    className="w-full border border-slate-300 rounded-xl px-4 py-3"
+  />
+</div>
 
-        {/* Class */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Class
-          </label>
+<div>
+  <label className="block mb-2 font-medium">
+    Room Number
+  </label>
 
-<select
-  value={reviewData.className}
-  onChange={(e) =>
-    setReviewData({
-      ...reviewData,
-      className: e.target.value,
-    })
-  }
-  className="w-full border border-slate-300 rounded-xl px-4 py-3"
->
-                <option>Select Class</option>
-            <option>6th Standard</option>
-            <option>7th Standard</option>
-            <option>8th Standard</option>
-            <option>9th Standard</option>
-            <option>10th Standard</option>
-          </select>
-        </div>
+  <input
+    type="text"
+    value={reviewData.roomNo}
+    onChange={(e) =>
+      setReviewData({
+        ...reviewData,
+        roomNo: e.target.value,
+      })
+    }
+    placeholder="A-101"
+    className="w-full border border-slate-300 rounded-xl px-4 py-3"
+  />
+</div>
 
-        {/* Section */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Section
-          </label>
+<div>
+  <label className="block mb-2 font-medium">
+    Food Category
+  </label>
 
-<select
-  value={reviewData.section}
-  onChange={(e) =>
-    setReviewData({
-      ...reviewData,
-      section: e.target.value,
-    })
-  }
-  className="w-full border border-slate-300 rounded-xl px-4 py-3"
->
-                <option>Select Section</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-          </select>
-        </div>
+  <select
+    value={reviewData.foodType}
+    onChange={(e) =>
+      setReviewData({
+        ...reviewData,
+        foodType: e.target.value,
+      })
+    }
+    className="w-full border border-slate-300 rounded-xl px-4 py-3"
+  >
+    <option value="">
+      Select Food Type
+    </option>
+
+    <option>Breakfast</option>
+    <option>Lunch</option>
+    <option>Dinner</option>
+    <option>Snacks</option>
+  </select>
+</div>
 
         {/* Rating */}
         <div>
@@ -176,7 +172,7 @@ const handleSubmit = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex justify-end gap-3 mt-6">
+      <div className="flex flex-col sm:flex-row justify-end gap-3 mt-6">
 
        <button
   onClick={() => {

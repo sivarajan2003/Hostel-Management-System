@@ -13,6 +13,8 @@ import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import Residents from "./pages/Residents";
 import ResidentsManagement from "./pages/ResidentsManagement";
+import ResidentProfile from "./pages/ResidentProfile";
+
 export default function App() {
   // Load initial state from local storage or defaults
   const [state, setState] = useState(() => getInitialState());
@@ -24,7 +26,9 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
   // Navigation / Role selection: 'receptionist' or 'student'
   const [role, setRole] = useState('receptionist');
   
-  const [collapsed, setCollapsed] = useState(false);
+ const [collapsed, setCollapsed] = useState(
+  window.innerWidth <= 768
+);
   // Active student ID for testing student view
   const [activeStudentId, setActiveStudentId] = useState(state.students[0]?.id || '');
   
@@ -158,6 +162,12 @@ if (!isLoggedIn) {
 }
   return (
   <div className="layout">
+    {!collapsed && (
+  <div
+    className="sidebar-overlay"
+    onClick={() => setCollapsed(true)}
+  />
+)}
 <Sidebar
   page={page}
   setPage={setPage}
@@ -170,6 +180,8 @@ if (!isLoggedIn) {
 <Header
   collapsed={collapsed}
   setCollapsed={setCollapsed}
+  setPage={setPage}
+  setIsLoggedIn={setIsLoggedIn}
 />
   <main className="page-content">
       {/* Sticky Premium Navbar */}
@@ -281,6 +293,9 @@ if (!isLoggedIn) {
 
   )
 
+)}
+{page === "profile" && (
+  <ResidentProfile />
 )}
 {page === "attendance" && (
   <Attendance />

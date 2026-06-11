@@ -68,7 +68,7 @@ useEffect(() => {
   return () => clearInterval(interval);
 }, [checkInDate]);
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
+  <div className="min-h-screen bg-slate-50 p-4 md:p-6">
 
   <button
   onClick={onBack}
@@ -138,7 +138,7 @@ useEffect(() => {
 
           {/* Profile */}
 
-          <div className="-mt-16 flex flex-col md:flex-row gap-6 items-center">
+          <div className="-mt-16 flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left">
 
             <img
               src={resident.image}

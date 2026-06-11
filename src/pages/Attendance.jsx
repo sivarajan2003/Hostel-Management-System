@@ -65,7 +65,7 @@ export default function AttendanceManagement() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
+    <div className="min-h-screen bg-slate-50 p-4 md:p-6">
 
       {/* Header */}
       <div className="mb-8">
@@ -87,14 +87,17 @@ export default function AttendanceManagement() {
               <p className="text-slate-500">
                 Total Residents
               </p>
-              <h2 className="text-4xl font-bold mt-2">
+              <h2 className="text-3xl font-bold mt-2">
                 {totalStudents}
               </h2>
             </div>
 
-            <div className="bg-blue-100 p-4 rounded-2xl">
-              <Users className="text-blue-600" />
-            </div>
+            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+  <Users size={22} className="
+    text-blue-600
+    animate-bounce
+  "/>
+</div>
           </div>
         </div>
 
@@ -104,14 +107,20 @@ export default function AttendanceManagement() {
               <p className="text-slate-500">
                 Currently In PG
               </p>
-              <h2 className="text-4xl font-bold text-green-600 mt-2">
+              <h2 className="text-3xl font-bold text-green-600 mt-2">
                 {presentStudents}
               </h2>
             </div>
 
-            <div className="bg-green-100 p-4 rounded-2xl">
-              <UserCheck className="text-green-600" />
-            </div>
+            {/* <div className="bg-green-100 p-4 rounded-2xl">
+             
+            </div> */}
+            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+   <UserCheck className="
+    text-blue-600
+    animate-bounce
+  " />
+</div>
           </div>
         </div>
 
@@ -121,14 +130,20 @@ export default function AttendanceManagement() {
               <p className="text-slate-500">
                 Outside PG
               </p>
-              <h2 className="text-4xl font-bold text-red-600 mt-2">
+              <h2 className="text-3xl font-bold text-red-600 mt-2">
                 {absentStudents}
               </h2>
             </div>
 
-            <div className="bg-red-100 p-4 rounded-2xl">
-              <UserX className="text-red-600" />
-            </div>
+            {/* <div className="bg-red-100 p-4 rounded-2xl">
+              
+            </div> */}
+            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+ <UserX className="
+    text-blue-600
+    animate-bounce
+  "/>
+</div>
           </div>
         </div>
 
@@ -138,14 +153,20 @@ export default function AttendanceManagement() {
               <p className="text-slate-500">
                Occupancy %
               </p>
-              <h2 className="text-4xl font-bold text-purple-600 mt-2">
+              <h2 className="text-3xl font-bold text-purple-600 mt-2">
                 {attendancePercentage}%
               </h2>
             </div>
 
-            <div className="bg-purple-100 p-4 rounded-2xl">
+            {/* <div className="bg-purple-100 p-4 rounded-2xl">
               <CalendarDays className="text-purple-600" />
-            </div>
+            </div> */}
+             <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+  <CalendarDays  className="
+    text-blue-600
+    animate-bounce
+  "/>
+</div>
           </div>
         </div>
 
@@ -192,8 +213,8 @@ export default function AttendanceManagement() {
 
       </div>
 
-      {/* Attendance Table */}
-      <div className="bg-white rounded-3xl shadow-sm mt-8 overflow-hidden">
+     {/* Attendance Table */}
+      <div className="hidden md:block hidden md:block bg-white rounded-3xl shadow-sm mt-8 overflow-hidden">
 
         <div className="p-6 border-b">
           <h2 className="text-xl font-bold">
@@ -316,6 +337,106 @@ export default function AttendanceManagement() {
 
         </div>
 
+
+</div>
+{/* Mobile Attendance Cards */}
+<div className="md:hidden mt-6 space-y-4">
+
+  {students.map((student) => (
+    <div
+      key={student.id}
+      className="bg-white rounded-2xl p-4 shadow-sm"
+    >
+
+      <div className="flex items-center gap-3 mb-4">
+
+        <img
+          src={student.image}
+          alt=""
+          className="w-14 h-14 rounded-full"
+        />
+
+        <div>
+          <h3 className="font-bold">
+            {student.name}
+          </h3>
+
+          <p className="text-sm text-slate-500">
+            {student.residentId}
+          </p>
+        </div>
+
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 text-sm">
+
+        <p>
+          <strong>Gender:</strong>{" "}
+          {student.gender}
+        </p>
+
+        <p>
+          <strong>Floor:</strong>{" "}
+          {student.floor}
+        </p>
+
+        <p>
+          <strong>Room:</strong>{" "}
+          {student.roomNo}
+        </p>
+
+        <p>
+          <strong>Status:</strong>{" "}
+          {student.status}
+        </p>
+
+      </div>
+
+      <div className="flex flex-wrap gap-2 mt-4">
+
+        <button
+          onClick={() =>
+            updateStatus(student.id, "In PG")
+          }
+          className={`px-3 py-2 rounded-xl text-sm ${
+            student.status === "In PG"
+              ? "bg-green-600 text-white"
+              : "bg-green-100 text-green-700"
+          }`}
+        >
+          Check In
+        </button>
+
+        <button
+          onClick={() =>
+            updateStatus(student.id, "Out")
+          }
+          className={`px-3 py-2 rounded-xl text-sm ${
+            student.status === "Out"
+              ? "bg-red-600 text-white"
+              : "bg-red-100 text-red-700"
+          }`}
+        >
+          Check Out
+        </button>
+
+        <button
+          onClick={() =>
+            updateStatus(student.id, "Leave")
+          }
+          className={`px-3 py-2 rounded-xl text-sm ${
+            student.status === "Leave"
+              ? "bg-yellow-600 text-white"
+              : "bg-yellow-100 text-yellow-700"
+          }`}
+        >
+          Leave
+        </button>
+
+      </div>
+
+    </div>
+  ))}
       </div>
 
       {/* Save Button */}
@@ -333,7 +454,7 @@ export default function AttendanceManagement() {
 {showSavePopup && (
   <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
 
-    <div className="bg-white p-8 rounded-3xl w-[400px] text-center">
+    <div className="bg-white p-6 rounded-3xl w-[90%] max-w-md text-center">
 
       <h2 className="text-2xl font-bold text-green-600">
         Attendance Saved

@@ -1,358 +1,714 @@
 import {
-  BedDouble,
   Users,
+  BedDouble,
+  IndianRupee,
   Building2,
-  AlertCircle,
+  UserCheck,
   UserPlus,
-  Bell,
-  Search,
+  AlertTriangle,
+  Wrench,
+  Eye,
+  TrendingUp,ChevronDown,
 } from "lucide-react";
+import { useState } from "react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 export default function Dashboard() {
-const stats = [
-  {
-    title: "Total Residents",
-    value: "248",
-    icon: Users,
-    iconBg: "bg-blue-100",
-    iconColor: "text-blue-600",
-  },
-  {
-    title: "Occupied Rooms",
-    value: "186",
-    icon: BedDouble,
-    iconBg: "bg-green-100",
-    iconColor: "text-green-600",
-  },
-  {
-    title: "Vacant Rooms",
-    value: "64",
-    icon: Building2,
-    iconBg: "bg-purple-100",
-    iconColor: "text-purple-600",
-  },
-  {
-    title: "Monthly Revenue",
-    value: "₹4.8L",
-    icon: Building2,
-    iconBg: "bg-orange-100",
-    iconColor: "text-orange-600",
-  },
-  {
-    title: "Complaints",
-    value: "8",
-    icon: AlertCircle,
-    iconBg: "bg-red-100",
-    iconColor: "text-red-600",
-  },
-  {
-    title: "Visitors Today",
-    value: "32",
-    icon: Users,
-    iconBg: "bg-pink-100",
-    iconColor: "text-pink-600",
-  },
+  const [filter, setFilter] = useState("Today");
+  const [revenueFilter, setRevenueFilter] = useState("This Month");
+  const [complaintFilter, setComplaintFilter] = useState("Recent");
+const [maintenanceFilter, setMaintenanceFilter] = useState("Recent");
+  const stats = [
+   {
+  title: "Total Residents",
+  value: "248",
+  change: "+12%",
+  icon: Users,
+  delay: "0s",
+},
+{
+  title: "Occupancy Rate",
+  value: "94%",
+  change: "+4%",
+  icon: BedDouble,
+  delay: "0.5s",
+},
+{
+  title: "Monthly Revenue",
+  value: "₹4.8L",
+  change: "+18%",
+  icon: IndianRupee,
+  delay: "1s",
+},
+{
+  title: "Vacant Rooms",
+  value: "18",
+  change: "-5%",
+  icon: Building2,
+  delay: "1.5s",
+},
+  ];
+
+  const checkins = [
+    {
+      name: "Rahul Kumar",
+      room: "A-204",
+      time: "09:15 AM",
+    },
+    {
+      name: "Priya Sharma",
+      room: "B-110",
+      time: "10:05 AM",
+    },
+    {
+      name: "Arun Raj",
+      room: "C-307",
+      time: "11:40 AM",
+    },
+  ];
+
+  const complaints = [
+    {
+      title: "WiFi Issue",
+      status: "Pending",
+    },
+    {
+      title: "Water Leakage",
+      status: "In Progress",
+    },
+    {
+      title: "AC Repair",
+      status: "Resolved",
+    },
+  ];
+const revenueData = [
+  { month: "Jan", revenue: 120000 },
+  { month: "Feb", revenue: 180000 },
+  { month: "Mar", revenue: 220000 },
+  { month: "Apr", revenue: 270000 },
+  { month: "May", revenue: 320000 },
+  { month: "Jun", revenue: 410000 },
 ];
+const revenueDatasets = {
+  "This Week": [
+    { month: "Mon", revenue: 20000 },
+    { month: "Tue", revenue: 25000 },
+    { month: "Wed", revenue: 18000 },
+    { month: "Thu", revenue: 30000 },
+    { month: "Fri", revenue: 28000 },
+    { month: "Sat", revenue: 35000 },
+    { month: "Sun", revenue: 40000 },
+  ],
+
+  "This Month": [
+    { month: "Week 1", revenue: 120000 },
+    { month: "Week 2", revenue: 180000 },
+    { month: "Week 3", revenue: 220000 },
+    { month: "Week 4", revenue: 280000 },
+  ],
+
+  "This Year": [
+    { month: "Jan", revenue: 120000 },
+    { month: "Feb", revenue: 180000 },
+    { month: "Mar", revenue: 220000 },
+    { month: "Apr", revenue: 270000 },
+    { month: "May", revenue: 320000 },
+    { month: "Jun", revenue: 410000 },
+    { month: "Jul", revenue: 450000 },
+    { month: "Aug", revenue: 490000 },
+    { month: "Sep", revenue: 520000 },
+    { month: "Oct", revenue: 580000 },
+    { month: "Nov", revenue: 640000 },
+    { month: "Dec", revenue: 720000 },
+  ],
+};
   return (
-   <div className="min-h-screen bg-white flex">
-      {/* Sidebar */}
-      {/* <aside className="w-72 bg-slate-900 text-white">
-        <div className="p-6 border-b border-slate-700">
-          <h1 className="text-2xl font-bold">
-            Hostel<span className="text-cyan-400">Pro</span>
-          </h1>
-          <p className="text-slate-400 text-sm mt-1">
-            Management System
-          </p>
-        </div>
+    <div className="min-h-screen bg-slate-50 p-4 md:p-6">
 
-        <nav className="p-5 space-y-3">
-          <button className="w-full bg-cyan-500 text-white p-3 rounded-xl text-left">
-            Dashboard
-          </button>
+      {/* Page Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-slate-800">
+          Hostel Dashboard
+        </h1>
+        <p className="text-slate-500 mt-1">
+          Welcome back, Admin 👋
+        </p>
+      </div>
 
-          <button className="w-full hover:bg-slate-800 p-3 rounded-xl text-left">
-            Students
-          </button>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
 
-          <button className="w-full hover:bg-slate-800 p-3 rounded-xl text-left">
-            Rooms
-          </button>
+        {stats.map((stat, index) => {
+          const Icon = stat.icon;
 
-          <button className="w-full hover:bg-slate-800 p-3 rounded-xl text-left">
-            Attendance
-          </button>
+          return (
+            <div
+              key={index}
+              className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 hover:shadow-lg transition"
+            >
+              <div className="flex justify-between items-start">
 
-          <button className="w-full hover:bg-slate-800 p-3 rounded-xl text-left">
-            Complaints
-          </button>
+                <div>
+                  <p className="text-slate-500 text-sm">
+                    {stat.title}
+                  </p>
 
-          <button className="w-full hover:bg-slate-800 p-3 rounded-xl text-left">
-            Fees
-          </button>
+                  <h2 className="text-3xl font-bold mt-2 text-slate-800">
+                    {stat.value}
+                  </h2>
 
-          <button className="w-full hover:bg-slate-800 p-3 rounded-xl text-left">
-            Visitors
-          </button>
+                  <div className="flex items-center mt-3 text-green-600 text-sm">
+                    <TrendingUp size={15} />
+                    <span className="ml-1">
+                      {stat.change}
+                    </span>
+                  </div>
+                </div>
 
-          <button className="w-full hover:bg-slate-800 p-3 rounded-xl text-left">
-            Settings
-          </button>
-        </nav>
-      </aside> */}
-
-      {/* Main */}
-      <main className="flex-1 p-8">
-        <div className="flex justify-between items-center mb-8">
-  <div>
-    <h1 className="text-4xl font-bold text-slate-800">
-      PG Hostel Dashboard
-    </h1>
-    <p className="text-slate-500 mt-2">
-      Welcome back, manage residents, rooms and revenue.
-    </p>
-  </div>
+                <div
+  className="
+    bg-blue-50
+    p-3
+    rounded-2xl
+    transition-all
+    duration-300
+    group-hover:scale-110
+    group-hover:rotate-6
+  "
+>
+ <Icon
+  size={28}
+  className="text-blue-600 floating-icon"
+  style={{
+    animationDelay: stat.delay,
+  }}
+/>
 </div>
 
-        {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
+              </div>
+            </div>
+          );
+        })}
+      </div>
 
-  {stats.map((item, index) => {
-    const Icon = item.icon;
+      {/* Analytics Section */}
+      <div className="grid lg:grid-cols-3 gap-6 mb-8">
 
-    return (
-      <div
-        key={index}
-        className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-lg transition-all duration-300"
-      >
-        <div className="flex justify-between items-center">
+        <div className="lg:col-span-2 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
 
-          <div>
-            <p className="text-slate-500 text-lg">
-              {item.title}
-            </p>
+  <div className="flex items-center justify-between mb-6">
+    <div>
+      <h2 className="text-xl font-semibold">
+        Revenue Overview
+      </h2>
 
-            <h2 className="text-3xl font-bold mt-3 text-slate-900">
-              {item.value}
-            </h2>
+      <p className="text-sm text-slate-500">
+        Last 6 Months Revenue
+      </p>
+    </div>
+
+    <div className="flex items-center gap-3">
+
+  <div className="relative">
+    <select
+      value={revenueFilter}
+      onChange={(e) => setRevenueFilter(e.target.value)}
+      className="
+        appearance-none
+        bg-slate-100
+        border
+        border-slate-200
+        rounded-xl
+        px-4
+        py-2
+        pr-10
+        text-sm
+        cursor-pointer
+      "
+    >
+      <option>This Week</option>
+      <option>This Month</option>
+      <option>This Year</option>
+    </select>
+
+    <ChevronDown
+      size={16}
+      className="
+        absolute
+        right-3
+        top-1/2
+        -translate-y-1/2
+        pointer-events-none
+        text-slate-500
+      "
+    />
+  </div>
+
+  <div className="text-right">
+    <h3 className="text-2xl font-bold text-green-600">
+      ₹15.2L
+    </h3>
+
+    <p className="text-sm text-green-500">
+      +18.4%
+    </p>
+  </div>
+
+</div>
+  </div>
+
+  <div className="h-72">
+    <ResponsiveContainer width="100%" height="100%">
+      <AreaChart data={revenueDatasets[revenueFilter]}>
+        <defs>
+          <linearGradient
+            id="colorRevenue"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="1"
+          >
+            <stop
+              offset="5%"
+              stopColor="#2563EB"
+              stopOpacity={0.4}
+            />
+            <stop
+              offset="95%"
+              stopColor="#2563EB"
+              stopOpacity={0}
+            />
+          </linearGradient>
+        </defs>
+
+        <CartesianGrid
+          strokeDasharray="3 3"
+          vertical={false}
+        />
+
+        <XAxis dataKey="month" />
+
+        <YAxis />
+
+        <Tooltip />
+
+        <Area
+          type="monotone"
+          dataKey="revenue"
+          stroke="#2563EB"
+          fillOpacity={1}
+          fill="url(#colorRevenue)"
+          strokeWidth={3}
+        />
+      </AreaChart>
+    </ResponsiveContainer>
+  </div>
+
+</div>
+
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+
+          <h2 className="text-xl font-semibold mb-6">
+            Occupancy Status
+          </h2>
+
+          <div className="space-y-5">
+
+            <div>
+              <div className="flex justify-between mb-2">
+                <span>Occupied</span>
+                <span>94%</span>
+              </div>
+
+              <div className="w-full bg-slate-200 h-3 rounded-full">
+                <div className="bg-green-500 h-3 rounded-full w-[94%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex justify-between mb-2">
+                <span>Vacant</span>
+                <span>6%</span>
+              </div>
+
+              <div className="w-full bg-slate-200 h-3 rounded-full">
+                <div className="bg-orange-400 h-3 rounded-full w-[6%]"></div>
+              </div>
+            </div>
+
           </div>
 
-          <div
-            className={`${item.iconBg} p-5 rounded-3xl`}
-          >
-            <Icon
-              size={20}
-              className={item.iconColor}
+        </div>
+
+      </div>
+
+      {/* Middle Section */}
+      <div className="grid xl:grid-cols-3 gap-6 mb-8">
+
+        {/* Check-ins */}
+        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
+
+  <div className="flex items-center justify-between mb-6">
+    <h2 className="font-semibold text-lg">
+      Recent Check-ins
+    </h2>
+
+   <div className="relative">
+  <select
+    value={filter}
+    onChange={(e) => setFilter(e.target.value)}
+    className="
+      appearance-none
+      bg-slate-100
+      border
+      border-slate-200
+      rounded-xl
+      px-4
+      py-2
+      pr-10
+      text-sm
+      cursor-pointer
+    "
+  >
+    <option>Today</option>
+    <option>Check In</option>
+    <option>Check Out</option>
+    <option>This Week</option>
+    <option>This Month</option>
+  </select>
+
+  <ChevronDown
+    size={16}
+    className="
+      absolute
+      right-3
+      top-1/2
+      -translate-y-1/2
+      pointer-events-none
+      text-slate-500
+    "
+  />
+</div>
+  </div>
+
+  <div className="space-y-4">
+
+    {checkins.map((item, index) => (
+      <div
+        key={index}
+        className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 transition"
+      >
+        <div className="flex items-center gap-3">
+
+          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-semibold text-blue-600">
+            {item.name.charAt(0)}
+          </div>
+
+          <div>
+            <h4 className="font-medium">
+              {item.name}
+            </h4>
+
+            <p className="text-sm text-slate-500">
+              Room {item.room}
+            </p>
+          </div>
+
+        </div>
+
+        <span className="text-xs text-slate-500">
+          {item.time}
+        </span>
+
+      </div>
+    ))}
+
+  </div>
+
+</div>
+
+        {/* Complaints */}
+        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
+
+  <div className="flex items-center justify-between mb-6">
+
+    <h2 className="font-semibold text-lg">
+      Complaints
+    </h2>
+
+   <div className="relative">
+  <select
+    value={complaintFilter}
+    onChange={(e) => setComplaintFilter(e.target.value)}
+    className="
+      appearance-none
+      bg-slate-100
+      border
+      border-slate-200
+      rounded-xl
+      px-4
+      py-2
+      pr-10
+      text-sm
+      cursor-pointer
+    "
+  >
+    <option>Recent</option>
+    <option>Pending</option>
+    <option>In Progress</option>
+    <option>Resolved</option>
+    <option>All</option>
+  </select>
+
+  <ChevronDown
+    size={16}
+    className="
+      absolute
+      right-3
+      top-1/2
+      -translate-y-1/2
+      pointer-events-none
+      text-slate-500
+    "
+  />
+</div>
+
+  </div>
+
+  <div className="space-y-4">
+
+    {complaints.map((item, index) => (
+      <div
+        key={index}
+        className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl"
+      >
+
+        <div className="flex items-center gap-3">
+
+          <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+            <AlertTriangle
+              size={18}
+              className="text-orange-500"
             />
           </div>
 
+          <span className="font-medium">
+            {item.title}
+          </span>
+
         </div>
+
+        <span
+          className={`px-3 py-1 rounded-full text-xs font-medium ${
+            item.status === "Pending"
+              ? "bg-red-100 text-red-600"
+              : item.status === "In Progress"
+              ? "bg-yellow-100 text-yellow-600"
+              : "bg-green-100 text-green-600"
+          }`}
+        >
+          {item.status}
+        </span>
+
       </div>
-    );
-  })}
+    ))}
+
+  </div>
 
 </div>
-        {/* Bottom Grid */}
-        <div className="grid lg:grid-cols-3 gap-6 mt-8">
-          {/* Room Status */}
-          <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
-            <h3 className="font-bold text-xl mb-6">
-              Room Occupancy
-            </h3>
 
-            <div className="space-y-5">
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span>Occupied</span>
-                  <span>85%</span>
-                </div>
+        {/* Maintenance */}
+        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
 
-                <div className="h-3 bg-gray-200 rounded-full">
-                  <div className="h-3 bg-green-500 rounded-full w-[85%]"></div>
-                </div>
-              </div>
+  <div className="flex items-center justify-between mb-6">
 
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span>Available</span>
-                  <span>15%</span>
-                </div>
+    <h2 className="font-semibold text-lg">
+      Maintenance
+    </h2>
 
-                <div className="h-3 bg-gray-200 rounded-full">
-                  <div className="h-3 bg-blue-500 rounded-full w-[15%]"></div>
-                </div>
-              </div>
-            </div>
+   <div className="relative">
+  <select
+    value={maintenanceFilter}
+    onChange={(e) => setMaintenanceFilter(e.target.value)}
+    className="
+      appearance-none
+      bg-slate-100
+      border
+      border-slate-200
+      rounded-xl
+      px-4
+      py-2
+      pr-10
+      text-sm
+      cursor-pointer
+    "
+  >
+    <option>Recent</option>
+    <option>Pending</option>
+    <option>Completed</option>
+    <option>Assigned</option>
+    <option>All</option>
+  </select>
+
+  <ChevronDown
+    size={16}
+    className="
+      absolute
+      right-3
+      top-1/2
+      -translate-y-1/2
+      pointer-events-none
+      text-slate-500
+    "
+  />
+</div>
+
+  </div>
+
+  <div className="space-y-4">
+
+    <div className="p-4 rounded-2xl bg-slate-50">
+
+      <div className="flex justify-between items-center">
+
+        <div className="flex items-center gap-3">
+
+          <div className="w-10 h-10 rounded-xl bg-yellow-100 flex items-center justify-center">
+            <Wrench
+              size={18}
+              className="text-yellow-600"
+            />
           </div>
 
-          {/* Recent Activity */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm">
-           <h3 className="font-bold text-xl mb-6">
-  Today's Activities
-</h3>
+          <div>
+            <h4 className="font-medium">
+              Electric Repair
+            </h4>
 
-            <div className="space-y-5">
-              <div className="flex gap-3">
-                <UserPlus className="text-green-500" />
-                <div>
-                  <p className="font-medium">
-                    New Resident Checked In
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    5 min ago
-                  </p>
-                </div>
-              </div>
+            <p className="text-xs text-slate-500">
+              Block A
+            </p>
+          </div>
 
-              <div className="flex gap-3">
-                <Bell className="text-red-500" />
-                <div>
-                  <p className="font-medium">
-                   Water Issue Complaint
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    15 min ago
-                  </p>
-                </div>
-              </div>
+        </div>
 
-              <div className="flex gap-3">
-                <BedDouble className="text-blue-500" />
-                <div>
-                  <p className="font-medium">
-                    Room Vacated
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    1 hour ago
-                  </p>
-                </div>
-              </div>
+        <span className="text-yellow-600 font-medium">
+          Pending
+        </span>
+
+      </div>
+
+    </div>
+
+    <div className="p-4 rounded-2xl bg-slate-50">
+
+      <div className="flex justify-between items-center">
+
+        <div className="flex items-center gap-3">
+
+          <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+            <Wrench
+              size={18}
+              className="text-green-600"
+            />
+          </div>
+
+          <div>
+            <h4 className="font-medium">
+              Bathroom Repair
+            </h4>
+
+            <p className="text-xs text-slate-500">
+              Block C
+            </p>
+          </div>
+
+        </div>
+
+        <span className="text-green-600 font-medium">
+          Completed
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+      </div>
+
+      {/* Bottom Cards */}
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+          <div className="flex items-center gap-3">
+            <Users
+  size={32}
+  className="
+    text-blue-600
+    animate-bounce
+  "
+/>
+            <div>
+              <h3 className="font-semibold">
+                Visitors Today
+              </h3>
+              <p className="text-3xl font-bold mt-2">
+                38
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Student Table */}
-        <div className="bg-white rounded-2xl p-6 mt-8 shadow-sm">
-          <h3 className="font-bold text-xl mb-5">
-          Recent Residents
-          </h3>
-
-          <table className="w-full border-separate border-spacing-y-3">
-            <thead>
-              <tr className="bg-slate-50 rounded-xl shadow">
-                <th className="text-left py-3">Resident</th>
-                <th className="text-left py-3">Room No</th>
-                <th className="text-left py-3">Rent</th>
-                <th className="text-left py-3">Status</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr className="border-b">
-               <td className="py-4">
-  <div className="flex items-center gap-3">
-    <img
-      src="https://i.pravatar.cc/40?img=1"
-      className="w-10 h-10 rounded-full"
-    />
-    <span>Arun Kumar</span>
-  </div>
-</td>
-               <td>A-102</td>
-<td>₹8,500</td>
-                <td>
-                  <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
-                    Active
-                  </span>
-                </td>
-              </tr>
-
-              <tr className="border-b">
-                <td className="py-4">
-  <div className="flex items-center gap-3">
-    <img
-      src="https://i.pravatar.cc/40?img=1"
-      className="w-10 h-10 rounded-full"
-    />
-    <span>Hari</span>
-  </div>
-</td>
-                <td>B-205</td>
-<td>₹7,500</td>
-                <td>
-                  <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
-                    Active
-                  </span>
-                </td>
-              </tr>
-
-              <tr>
-               <td className="py-4">
-  <div className="flex items-center gap-3">
-    <img
-      src="https://i.pravatar.cc/40?img=1"
-      className="w-10 h-10 rounded-full"
-    />
-    <span> Kumar</span>
-  </div>
-</td>
-              <td>C-110</td>
-<td>₹9,000</td>
-                <td>
-                  <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
-                    Pending
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+          <div className="flex items-center gap-3">
+            <UserCheck  size={32}
+  className="
+    text-blue-600
+    animate-bounce
+  "
+/>
+            <div>
+              <h3 className="font-semibold">
+                Staff Attendance
+              </h3>
+              <p className="text-3xl font-bold mt-2">
+                96%
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-6 mt-8">
 
-  <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
-    <h3 className="text-slate-500 font-medium">
-      Monthly Revenue
-    </h3>
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+          <div className="flex items-center gap-3">
+            <Eye  size={32}
+  className="
+    text-blue-600
+    animate-bounce
+  "
+/>
+            <div>
+              <h3 className="font-semibold">
+                Notifications
+              </h3>
+              <p className="text-3xl font-bold mt-2">
+                12
+              </p>
+            </div>
+          </div>
+        </div>
 
-    <h1 className="text-4xl font-bold mt-3">
-      ₹4.8L
-    </h1>
+      </div>
 
-    <p className="text-green-600 mt-2">
-      +12% Growth This Month
-    </p>
-  </div>
-
-  <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
-    <h3 className="text-slate-500 font-medium">
-      Check-ins Today
-    </h3>
-
-    <h1 className="text-4xl font-bold mt-3">
-      12
-    </h1>
-
-    <p className="text-blue-600 mt-2">
-      New Residents
-    </p>
-  </div>
-
-  <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
-    <h3 className="text-slate-500 font-medium">
-      Maintenance Requests
-    </h3>
-
-    <h1 className="text-4xl font-bold mt-3">
-      5
-    </h1>
-
-    <p className="text-red-600 mt-2">
-      Pending Issues
-    </p>
-  </div>
-
-</div>
-      </main>
     </div>
   );
 }

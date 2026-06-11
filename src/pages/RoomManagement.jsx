@@ -12,6 +12,12 @@ import { useState } from "react";
 export default function RoomManagement() {
   
 const [showModal, setShowModal] = useState(false);
+const [selectedRoom, setSelectedRoom] = useState(null);
+const [showViewModal, setShowViewModal] = useState(false);
+const [showEditModal, setShowEditModal] = useState(false);
+const [searchTerm, setSearchTerm] = useState("");
+const [blockFilter, setBlockFilter] = useState("All Blocks");
+const [statusFilter, setStatusFilter] = useState("All Status");
 const [rooms, setRooms] = useState([
   {
     id: 1,
@@ -67,6 +73,29 @@ const handleSaveRoom = () => {
     totalBeds: 4,
   });
 };
+const filteredRooms = rooms.filter((room) => {
+  const matchesSearch =
+    room.roomNo
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase()) ||
+    room.block
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+  const matchesBlock =
+    blockFilter === "All Blocks" ||
+    room.block === blockFilter;
+
+  const matchesStatus =
+    statusFilter === "All Status" ||
+    room.status === statusFilter;
+
+  return (
+    matchesSearch &&
+    matchesBlock &&
+    matchesStatus
+  );
+});
   return (
     <div className="min-h-screen bg-slate-50 p-6">
 
@@ -88,12 +117,15 @@ const handleSaveRoom = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-slate-500">Total Rooms</p>
-              <h2 className="text-4xl font-bold mt-2">250</h2>
+              <h2 className="text-3xl font-bold mt-2">250</h2>
             </div>
 
             <div className="bg-blue-100 p-4 rounded-2xl">
-              <Building2 className="text-blue-600" />
-            </div>
+  <Building2
+    size={22}
+    className="text-blue-600 animate-bounce"
+  />
+</div>
           </div>
         </div>
 
@@ -101,12 +133,15 @@ const handleSaveRoom = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-slate-500">Occupied Rooms</p>
-              <h2 className="text-4xl font-bold mt-2">186</h2>
+              <h2 className="text-3xl font-bold mt-2">186</h2>
             </div>
 
-            <div className="bg-green-100 p-4 rounded-2xl">
-              <BedDouble className="text-green-600" />
-            </div>
+           <div className="bg-green-100 p-4 rounded-2xl">
+  <BedDouble
+    size={22}
+    className="text-green-600 animate-bounce"
+  />
+</div>
           </div>
         </div>
 
@@ -114,11 +149,15 @@ const handleSaveRoom = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-slate-500">Available Rooms</p>
-              <h2 className="text-4xl font-bold mt-2">64</h2>
+              <h2 className="text-3xl font-bold mt-2">64</h2>
             </div>
 
             <div className="bg-purple-100 p-4 rounded-2xl">
-              <Users className="text-purple-600" />
+              
+  <Users
+    size={22}
+    className="text-purple-600 animate-bounce"
+  />
             </div>
           </div>
         </div>
@@ -127,11 +166,16 @@ const handleSaveRoom = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-slate-500">Monthly Revenue</p>
-              <h2 className="text-4xl font-bold mt-2">₹1.2L</h2>
+              <h2 className="text-3xl font-bold mt-2">₹1.2L</h2>
             </div>
 
             <div className="bg-orange-100 p-4 rounded-2xl">
-              <IndianRupee className="text-orange-600" />
+          
+  <IndianRupee
+    size={22}
+    className="text-blue-600 float-icon"
+  />
+
             </div>
           </div>
         </div>
@@ -149,20 +193,30 @@ const handleSaveRoom = () => {
               className="absolute left-4 top-4 text-slate-400"
             />
 
-            <input
-              type="text"
-              placeholder="Search Room..."
-              className="w-full border border-slate-200 rounded-xl pl-12 py-3 outline-none"
-            />
+           <input
+  type="text"
+  placeholder="Search Room..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  className="w-full border border-slate-200 rounded-xl pl-12 py-3 outline-none"
+/>
           </div>
 
-          <select className="border border-slate-200 rounded-xl px-4 py-3">
+          <select
+  value={blockFilter}
+  onChange={(e) => setBlockFilter(e.target.value)}
+  className="border border-slate-200 rounded-xl px-4 py-3"
+>
             <option>All Blocks</option>
             <option>Block A</option>
             <option>Block B</option>
           </select>
 
-          <select className="border border-slate-200 rounded-xl px-4 py-3">
+          <select
+  value={statusFilter}
+  onChange={(e) => setStatusFilter(e.target.value)}
+  className="border border-slate-200 rounded-xl px-4 py-3"
+>
             <option>All Status</option>
             <option>Available</option>
             <option>Occupied</option>
@@ -183,7 +237,7 @@ const handleSaveRoom = () => {
       {/* Room Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
 
-        {rooms.map((room) => (
+        {filteredRooms.map((room) => (
           <div
             key={room.id}
             className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100"
@@ -266,13 +320,25 @@ const handleSaveRoom = () => {
 
             <div className="flex gap-3 mt-6">
 
-              <button className="flex-1 bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2">
-                <Eye size={16} />
+<button
+  onClick={() => {
+    setSelectedRoom(room);
+    setShowViewModal(true);
+  }}
+  className="flex-1 bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2"
+>
+                  <Eye size={16} />
                 View
               </button>
 
-              <button className="flex-1 bg-slate-100 py-3 rounded-xl flex items-center justify-center gap-2">
-                <Edit size={16} />
+<button
+  onClick={() => {
+    setSelectedRoom(room);
+    setShowEditModal(true);
+  }}
+  className="flex-1 bg-slate-100 py-3 rounded-xl flex items-center justify-center gap-2"
+>
+                  <Edit size={16} />
                 Edit
               </button>
 
@@ -413,6 +479,114 @@ const handleSaveRoom = () => {
           className="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700"
         >
           Save Room
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+)}
+{showViewModal && selectedRoom && (
+  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+    <div className="bg-white rounded-3xl p-8 w-full max-w-lg">
+
+      <h2 className="text-2xl font-bold mb-6">
+        Room Details
+      </h2>
+
+      <div className="space-y-4">
+
+        <p><b>Room No:</b> {selectedRoom.roomNo}</p>
+
+        <p><b>Block:</b> {selectedRoom.block}</p>
+
+        <p><b>Type:</b> {selectedRoom.type}</p>
+
+        <p>
+          <b>Occupied:</b>{" "}
+          {selectedRoom.occupied}/{selectedRoom.totalBeds}
+        </p>
+
+        <p><b>Status:</b> {selectedRoom.status}</p>
+
+      </div>
+
+      <div className="mt-8 flex justify-end">
+
+        <button
+          onClick={() => setShowViewModal(false)}
+          className="px-5 py-3 bg-slate-200 rounded-xl"
+        >
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+)}
+{showEditModal && selectedRoom && (
+  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+    <div className="bg-white rounded-3xl p-8 w-full max-w-xl">
+
+      <h2 className="text-2xl font-bold mb-6">
+        Edit Room
+      </h2>
+
+      <div className="grid grid-cols-2 gap-4">
+
+        <input
+          value={selectedRoom.roomNo}
+          onChange={(e) =>
+            setSelectedRoom({
+              ...selectedRoom,
+              roomNo: e.target.value,
+            })
+          }
+          className="border rounded-xl p-3"
+        />
+
+        <input
+          value={selectedRoom.block}
+          onChange={(e) =>
+            setSelectedRoom({
+              ...selectedRoom,
+              block: e.target.value,
+            })
+          }
+          className="border rounded-xl p-3"
+        />
+
+      </div>
+
+      <div className="flex justify-end gap-3 mt-8">
+
+        <button
+          onClick={() => setShowEditModal(false)}
+          className="px-5 py-3 border rounded-xl"
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={() => {
+            setRooms(
+              rooms.map((r) =>
+                r.id === selectedRoom.id
+                  ? selectedRoom
+                  : r
+              )
+            );
+
+            setShowEditModal(false);
+          }}
+          className="px-5 py-3 bg-blue-600 text-white rounded-xl"
+        >
+          Save Changes
         </button>
 
       </div>

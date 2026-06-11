@@ -4,8 +4,13 @@ import {
   Users,
   ClipboardList,
   Utensils,
-  Star, X,
-  Settings, Home,
+  Star,
+  Settings,
+  Home,
+   Building2,
+     X,
+       BedDouble,
+UserCircle ,
 } from "lucide-react";
 
 export default function Sidebar({
@@ -14,22 +19,35 @@ export default function Sidebar({
   collapsed,
   setCollapsed
 }) {
+  
   return (
-    <aside
+   <aside
   className={`sidebar ${
     collapsed ? "collapsed" : ""
   }`}
 >
-  <div className="mobile-close">
+
+<div className="mobile-close">
   <X
     size={24}
     onClick={() => setCollapsed(true)}
   />
 </div>
-      <div className="sidebar-logo">
-        Hostel Management
-      </div>
 
+<div className="sidebar-logo">
+
+  <div className="logo-icon">
+   <Home size={22} />
+  </div>
+
+  {!collapsed && (
+    <div className="logo-text">
+      <h2>Hostel</h2>
+      <p>Management</p>
+    </div>
+  )}
+
+</div>
       <div className="sidebar-menu">
         <div
   title="Dashboard"
@@ -54,7 +72,17 @@ export default function Sidebar({
   onClick={() => setPage("student")}
 >
   <Users size={20} />
-  {!collapsed && <span>Student Management</span>}
+  {!collapsed && <span>Resident Management</span>}
+</div>
+<div
+  title="My Profile"
+  className={`sidebar-item ${
+    page === "profile" ? "active" : ""
+  }`}
+  onClick={() => setPage("profile")}
+>
+  <UserCircle size={20} />
+  {!collapsed && <span>Resident Dashboard</span>}
 </div>
 <div
   title="Residents"
@@ -66,6 +94,7 @@ export default function Sidebar({
   <Home size={20} />
   {!collapsed && <span>Residents</span>}
 </div>
+
 <div
   title="Attendance"
   className={`sidebar-item ${page === "attendance" ? "active" : ""}`}

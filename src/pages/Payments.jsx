@@ -1,11 +1,13 @@
 //Payments.jsx
 export default function Payments() {
   return (
-    <div className="bg-white p-6 rounded-3xl shadow">
+    <div className="bg-white p-4 md:p-6 rounded-3xl shadow">
 
       <h2 className="text-2xl font-bold mb-6">
         Rent Payments
       </h2>
+<div className="hidden md:block overflow-x-auto">
+
 <table className="w-full">
   <thead>
     <tr className="bg-slate-100">
@@ -27,6 +29,39 @@ export default function Payments() {
     </tr>
   </tbody>
 </table>
+</div>
+<div className="md:hidden space-y-4">
+
+  <div className="border rounded-2xl p-4">
+
+    <h3 className="font-bold text-lg">
+      Arun Kumar
+    </h3>
+
+    <div className="mt-3 space-y-2">
+
+      <p>
+        <span className="font-medium">
+          Amount:
+        </span>{" "}
+        ₹8,500
+      </p>
+
+      <p>
+        <span className="font-medium">
+          Status:
+        </span>
+
+        <span className="ml-2 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+          Paid
+        </span>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
 
     </div>
   );
