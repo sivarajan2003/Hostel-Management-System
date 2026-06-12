@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 
 
 const HostelCard = ({ title, status }) => (
-  <div className="bg-white rounded-xl shadow-md p-4 border border-gray-100">
+  <div className="bg-white/90 backdrop-blur-lg rounded-2xl shadow-lg p-5 border border-white">
     <div className="flex items-center gap-3">
       <BedDouble className="text-blue-500" size={20} />
       <div>
@@ -67,13 +67,181 @@ const Login = ({ onLogin }) => {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center relative overflow-hidden p-4">
 
-      {/* Login Card */}
-      <div className="max-w-md w-full bg-white rounded-3xl shadow-2xl p-10 border border-gray-100">
+   return (
+  <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden p-4">
 
-        {/* Logo */}
+    {/* Animated Background */}
+   {/* <div className="absolute inset-0 w-full h-full overflow-hidden opacity-40">
+
+      <div className="absolute inset-0 flex justify-around gap-8 -rotate-12 scale-125 w-full">
+
+        <FloatingColumn speed={30}>
+          <HostelCard title="Room A-101" status="Occupied" />
+          <HostelCard title="Room A-102" status="Available" />
+          <HostelCard title="Room B-201" status="Occupied" />
+          <HostelCard title="Room B-202" status="Available" />
+        </FloatingColumn>
+
+        <FloatingColumn speed={35}>
+          <HostelCard title="4 Sharing" status="18 Residents" />
+          <HostelCard title="Attendance" status="95%" />
+          <HostelCard title="Food Review" status="4.8 Rating" />
+          <HostelCard title="Vacant Beds" status="12 Beds" />
+        </FloatingColumn>
+
+        <FloatingColumn speed={40}>
+          <HostelCard title="Room C-301" status="Occupied" />
+          <HostelCard title="Room C-302" status="Available" />
+          <HostelCard title="Fee Collection" status="₹85,000" />
+          <HostelCard title="Complaints" status="3 Pending" />
+        </FloatingColumn>
+        <FloatingColumn speed={45}>
+          <HostelCard title="Room A-101" status="Occupied" />
+          <HostelCard title="Room A-102" status="Available" />
+          <HostelCard title="Room B-201" status="Occupied" />
+          <HostelCard title="Room B-202" status="Available" />
+        </FloatingColumn>
+
+        <FloatingColumn speed={50}>
+          <HostelCard title="4 Sharing" status="18 Residents" />
+          <HostelCard title="Attendance" status="95%" />
+          <HostelCard title="Food Review" status="4.8 Rating" />
+          <HostelCard title="Vacant Beds" status="12 Beds" />
+        </FloatingColumn>
+
+        <FloatingColumn speed={55}>
+          <HostelCard title="Room C-301" status="Occupied" />
+          <HostelCard title="Room C-302" status="Available" />
+          <HostelCard title="Fee Collection" status="₹85,000" />
+          <HostelCard title="Complaints" status="3 Pending" />
+        </FloatingColumn>
+
+      </div>
+
+    </div> */}
+<div className="absolute inset-0 overflow-hidden">
+
+  <motion.div
+    animate={{
+      x: [0, 100, 0],
+      y: [0, -80, 0],
+    }}
+    transition={{
+      repeat: Infinity,
+      duration: 15,
+    }}
+    className="absolute top-10 left-20 w-72 h-72 bg-blue-400/30 rounded-full blur-3xl"
+  />
+
+  <motion.div
+    animate={{
+      x: [0, -120, 0],
+      y: [0, 100, 0],
+    }}
+    transition={{
+      repeat: Infinity,
+      duration: 18,
+    }}
+    className="absolute bottom-10 right-20 w-80 h-80 bg-indigo-400/30 rounded-full blur-3xl"
+  />
+
+</div>
+{/* Premium Background */}
+<div className="absolute inset-0 overflow-hidden">
+
+  {/* Blue Gradient Circle */}
+  <motion.div
+    animate={{
+      x: [0, 80, 0],
+      y: [0, -60, 0],
+    }}
+    transition={{
+      repeat: Infinity,
+      duration: 12,
+    }}
+    className="absolute top-10 left-10 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl"
+  />
+
+  {/* Purple Circle */}
+  <motion.div
+    animate={{
+      x: [0, -100, 0],
+      y: [0, 80, 0],
+    }}
+    transition={{
+      repeat: Infinity,
+      duration: 15,
+    }}
+    className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-indigo-400/20 rounded-full blur-3xl"
+  />
+
+  {/* Hostel Building Icon */}
+  <div className="absolute inset-0 overflow-hidden">
+
+  {/* Gradient Blob 1 */}
+  <motion.div
+    animate={{
+      x: [0, 120, 0],
+      y: [0, -80, 0],
+      scale: [1, 1.2, 1],
+    }}
+    transition={{
+      duration: 18,
+      repeat: Infinity,
+    }}
+    className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px]"
+  />
+
+  {/* Gradient Blob 2 */}
+  <motion.div
+    animate={{
+      x: [0, -150, 0],
+      y: [0, 100, 0],
+      scale: [1.1, 1, 1.1],
+    }}
+    transition={{
+      duration: 22,
+      repeat: Infinity,
+    }}
+    className="absolute bottom-[-150px] right-[-150px] w-[600px] h-[600px] bg-violet-500/20 rounded-full blur-[140px]"
+  />
+
+  {/* Gradient Blob 3 */}
+  <motion.div
+    animate={{
+      y: [0, -60, 0],
+      scale: [1, 1.15, 1],
+    }}
+    transition={{
+      duration: 14,
+      repeat: Infinity,
+    }}
+    className="absolute top-[40%] left-[40%] w-[300px] h-[300px] bg-cyan-400/20 rounded-full blur-[100px]"
+  />
+
+</div>
+{[...Array(15)].map((_, i) => (
+  <motion.div
+    key={i}
+    animate={{
+      y: [0, -100, 0],
+      opacity: [0.2, 1, 0.2],
+    }}
+    transition={{
+      duration: 5 + i,
+      repeat: Infinity,
+    }}
+    className="absolute w-2 h-2 bg-white rounded-full"
+    style={{
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+    }}
+  />
+))}
+</div>
+    {/* Login Card */}
+    <div className="max-w-lg w-full bg-white/70 backdrop-blur-2xl backdrop-blur-xl rounded-3xl shadow-2xl p-10 border border-white/40 relative z-10">        {/* Logo */}
         <div className="text-center mb-6">
           <div className="w-16 h-16 bg-black rounded-xl flex items-center justify-center mx-auto mb-3">
             <Building2 className="text-white" size={30} />
