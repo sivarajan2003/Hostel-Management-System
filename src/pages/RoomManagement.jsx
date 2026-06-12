@@ -101,11 +101,11 @@ const filteredRooms = rooms.filter((room) => {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">
+        <h1 className="text-2xl font-semibold text-slate-800">
           Room Management
         </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm text-slate-500 mt-1">
           Manage hostel rooms and bed allocations
         </p>
       </div>
@@ -113,11 +113,11 @@ const filteredRooms = rooms.filter((room) => {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-slate-500">Total Rooms</p>
-              <h2 className="text-3xl font-bold mt-2">250</h2>
+              <p className="text-sm text-slate-500"> Rooms</p>
+              <h2 className="text-2xl font-semibold mt-1">250</h2>
             </div>
 
             <div className="bg-blue-100 p-4 rounded-2xl">
@@ -129,11 +129,11 @@ const filteredRooms = rooms.filter((room) => {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-slate-500">Occupied Rooms</p>
-              <h2 className="text-3xl font-bold mt-2">186</h2>
+              <p className="text-sm text-slate-500">Occupied Rooms</p>
+              <h2 className="text-2xl font-semibold mt-1">186</h2>
             </div>
 
            <div className="bg-green-100 p-4 rounded-2xl">
@@ -145,11 +145,11 @@ const filteredRooms = rooms.filter((room) => {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-slate-500">Available Rooms</p>
-              <h2 className="text-3xl font-bold mt-2">64</h2>
+              <p className="text-sm text-slate-500">Available Rooms</p>
+              <h2 className="text-2xl font-semibold mt-1">64</h2>
             </div>
 
             <div className="bg-purple-100 p-4 rounded-2xl">
@@ -162,11 +162,11 @@ const filteredRooms = rooms.filter((room) => {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-slate-500">Monthly Revenue</p>
-              <h2 className="text-3xl font-bold mt-2">₹1.2L</h2>
+              <p className="text-sm text-slate-500">Monthly Revenue</p>
+              <h2 className="text-2xl font-semibold mt-1">₹1.2L</h2>
             </div>
 
             <div className="bg-orange-100 p-4 rounded-2xl">
@@ -183,7 +183,7 @@ const filteredRooms = rooms.filter((room) => {
       </div>
 
       {/* Search */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm mt-8">
+      <div className="bg-white rounded-3xl p-5 shadow-sm mt-6">
 
         <div className="flex flex-col lg:flex-row gap-4">
 
@@ -198,14 +198,14 @@ const filteredRooms = rooms.filter((room) => {
   placeholder="Search Room..."
   value={searchTerm}
   onChange={(e) => setSearchTerm(e.target.value)}
-  className="w-full border border-slate-200 rounded-xl pl-12 py-3 outline-none"
+ className="w-full border border-slate-200 rounded-xl pl-12 py-2.5 text-sm outline-none"
 />
           </div>
 
           <select
   value={blockFilter}
   onChange={(e) => setBlockFilter(e.target.value)}
-  className="border border-slate-200 rounded-xl px-4 py-3"
+  className="border border-slate-200 rounded-xl px-4 py-2.5 text-sm"
 >
             <option>All Blocks</option>
             <option>Block A</option>
@@ -215,7 +215,7 @@ const filteredRooms = rooms.filter((room) => {
           <select
   value={statusFilter}
   onChange={(e) => setStatusFilter(e.target.value)}
-  className="border border-slate-200 rounded-xl px-4 py-3"
+  className="border border-slate-200 rounded-xl px-4 py-2.5 text-sm"
 >
             <option>All Status</option>
             <option>Available</option>
@@ -235,7 +235,7 @@ const filteredRooms = rooms.filter((room) => {
       </div>
 
       {/* Room Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
 
         {filteredRooms.map((room) => (
           <div
@@ -246,7 +246,7 @@ const filteredRooms = rooms.filter((room) => {
             <div className="flex justify-between items-start">
 
               <div>
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-lg font-semibold">
                   {room.roomNo}
                 </h2>
 
@@ -254,7 +254,7 @@ const filteredRooms = rooms.filter((room) => {
                   {room.block}
                 </p>
 
-                <p className="text-sm text-blue-600 mt-2">
+                <p className="text-xs text-blue-600 mt-1">
                   {room.type}
                 </p>
               </div>
@@ -325,7 +325,7 @@ const filteredRooms = rooms.filter((room) => {
     setSelectedRoom(room);
     setShowViewModal(true);
   }}
-  className="flex-1 bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2"
+  className="flex-1 bg-blue-600 text-white py-2.5 rounded-xl text-sm font-medium flex items-center justify-center gap-2"
 >
                   <Eye size={16} />
                 View
@@ -358,7 +358,7 @@ const filteredRooms = rooms.filter((room) => {
         <div className="flex items-center justify-between">
 
           <div>
-            <h2 className="text-3xl font-bold text-slate-800">
+            <h2 className="text-2xl font-semibold text-slate-800">
               Add New Room
             </h2>
 
@@ -513,7 +513,7 @@ const filteredRooms = rooms.filter((room) => {
 
       </div>
 
-      <div className="mt-8 flex justify-end">
+      <div className="mt-6 flex justify-end">
 
         <button
           onClick={() => setShowViewModal(false)}
@@ -563,7 +563,7 @@ const filteredRooms = rooms.filter((room) => {
 
       </div>
 
-      <div className="flex justify-end gap-3 mt-8">
+      <div className="flex justify-end gap-3 mt-6">
 
         <button
           onClick={() => setShowEditModal(false)}

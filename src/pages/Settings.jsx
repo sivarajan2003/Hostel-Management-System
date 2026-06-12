@@ -26,11 +26,11 @@ export default function Settings() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">
+        <h1 className="text-2xl font-semibold text-slate-800">
           Settings
         </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm text-slate-500 mt-1">
           Manage hostel configuration and preferences
         </p>
       </div>
@@ -38,11 +38,11 @@ export default function Settings() {
       <div className="grid lg:grid-cols-2 gap-6">
 
         {/* Hostel Information */}
-        <div className="bg-white rounded-3xl shadow-sm p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
 
           <div className="flex items-center gap-3 mb-6">
-            <Building2 className="text-blue-600" />
-            <h2 className="text-xl font-bold">
+            <Building2 size={18} className="text-blue-600" />
+            <h2 className="text-lg font-semibold text-slate-800">
               Hostel Information
             </h2>
           </div>
@@ -50,26 +50,26 @@ export default function Settings() {
           <div className="space-y-4">
 
             <div>
-              <label className="block mb-2 font-medium">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Hostel Name
               </label>
 
               <input
                 type="text"
                 value={settings.hostelName}
-                className="w-full border border-slate-300 rounded-xl px-4 py-3"
+                className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
               />
             </div>
 
             <div>
-              <label className="block mb-2 font-medium">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Contact Number
               </label>
 
               <input
                 type="text"
                 value={settings.phone}
-                className="w-full border border-slate-300 rounded-xl px-4 py-3"
+                className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
               />
             </div>
 
@@ -78,11 +78,11 @@ export default function Settings() {
         </div>
 
         {/* Admin Profile */}
-        <div className="bg-white rounded-3xl shadow-sm p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
 
           <div className="flex items-center gap-3 mb-6">
             <User className="text-green-600" />
-            <h2 className="text-xl font-bold">
+            <h2 className="text-lg font-semibold text-slate-800">
               Admin Profile
             </h2>
           </div>
@@ -90,26 +90,26 @@ export default function Settings() {
           <div className="space-y-4">
 
             <div>
-              <label className="block mb-2 font-medium">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Admin Name
               </label>
 
               <input
                 type="text"
                 value={settings.ownerName}
-                className="w-full border border-slate-300 rounded-xl px-4 py-3"
+                className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
               />
             </div>
 
             <div>
-              <label className="block mb-2 font-medium">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Email Address
               </label>
 
               <input
                 type="email"
                 value={settings.email}
-                className="w-full border border-slate-300 rounded-xl px-4 py-3"
+                className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
               />
             </div>
 
@@ -118,11 +118,11 @@ export default function Settings() {
         </div>
 
         {/* Fee Settings */}
-        <div className="bg-white rounded-3xl shadow-sm p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
 
           <div className="flex items-center gap-3 mb-6">
             <IndianRupee className="text-orange-600" />
-            <h2 className="text-xl font-bold">
+            <h2 className="text-lg font-semibold text-slate-800">
               Fee Settings
             </h2>
           </div>
@@ -130,26 +130,26 @@ export default function Settings() {
           <div className="space-y-4">
 
             <div>
-              <label className="block mb-2 font-medium">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Monthly Fee
               </label>
 
               <input
                 type="number"
                 value={settings.monthlyFee}
-                className="w-full border border-slate-300 rounded-xl px-4 py-3"
+                className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
               />
             </div>
 
             <div>
-              <label className="block mb-2 font-medium">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Security Deposit
               </label>
 
               <input
                 type="number"
                 value={settings.securityDeposit}
-                className="w-full border border-slate-300 rounded-xl px-4 py-3"
+                className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
               />
             </div>
 
@@ -158,23 +158,23 @@ export default function Settings() {
         </div>
 
         {/* Notifications */}
-        <div className="bg-white rounded-3xl shadow-sm p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
 
           <div className="flex items-center gap-3 mb-6">
             <Bell className="text-purple-600" />
-            <h2 className="text-xl font-bold">
+            <h2 className="text-lg font-semibold text-slate-800">
               Notification Settings
             </h2>
           </div>
 
-          <div className="flex items-center justify-between border rounded-xl p-4">
+          <div className="flex items-center justify-between border border-slate-200 rounded-xl p-3">
 
             <div>
-              <p className="font-semibold">
+             <p className="text-sm font-semibold">
                 Enable Notifications
               </p>
 
-              <p className="text-sm text-slate-500">
+              <p className="text-xs text-slate-500">
                 Receive complaint and fee alerts
               </p>
             </div>
@@ -182,7 +182,7 @@ export default function Settings() {
             <input
               type="checkbox"
               checked={settings.notifications}
-              className="w-5 h-5"
+              className="w-4 h-4"
             />
 
           </div>
@@ -190,11 +190,11 @@ export default function Settings() {
         </div>
 
         {/* Security */}
-        <div className="bg-white rounded-3xl shadow-sm p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
 
           <div className="flex items-center gap-3 mb-6">
             <Lock className="text-red-600" />
-            <h2 className="text-xl font-bold">
+            <h2 className="text-lg font-semibold text-slate-800">
               Security
             </h2>
           </div>
@@ -204,19 +204,19 @@ export default function Settings() {
             <input
               type="password"
               placeholder="Current Password"
-              className="w-full border border-slate-300 rounded-xl px-4 py-3"
+              className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
             />
 
             <input
               type="password"
               placeholder="New Password"
-              className="w-full border border-slate-300 rounded-xl px-4 py-3"
+              className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
             />
 
             <input
               type="password"
               placeholder="Confirm Password"
-              className="w-full border border-slate-300 rounded-xl px-4 py-3"
+              className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
             />
 
           </div>
@@ -224,22 +224,22 @@ export default function Settings() {
         </div>
 
         {/* Backup */}
-        <div className="bg-white rounded-3xl shadow-sm p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
 
           <div className="flex items-center gap-3 mb-6">
             <RefreshCcw className="text-cyan-600" />
-            <h2 className="text-xl font-bold">
+            <h2 className="text-lg font-semibold text-slate-800">
               Backup & Reset
             </h2>
           </div>
 
           <div className="flex gap-4">
 
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-xl">
+            <button className="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl">
               Backup Data
             </button>
 
-            <button className="bg-red-600 text-white px-6 py-3 rounded-xl">
+            <button className="bg-red-600 text-white px-5 py-2.5 text-sm rounded-xl">
               Reset System
             </button>
 
@@ -252,9 +252,9 @@ export default function Settings() {
       {/* Save Button */}
       <div className="flex justify-end mt-8">
 
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl flex items-center gap-2">
+        <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 text-sm rounded-xl flex items-center gap-2">
 
-          <Save size={18} />
+          <Save size={16} />
 
           Save Settings
 

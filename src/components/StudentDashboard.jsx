@@ -151,11 +151,11 @@ return (
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-slate-800">
+        <h1 className="text-2xl font-semibold text-slate-800">
           Resident Management
         </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm text-slate-500 mt-1">
           Manage residents, room allocation and hostel operations
         </p>
       </div>
@@ -163,11 +163,11 @@ return (
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-        <div className="bg-white p-6 rounded-3xl shadow">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex justify-between">
             <div>
-              <p className="text-slate-500">Total Residents</p>
-              <h2 className="text-3xl font-bold mt-2">248</h2>
+             <p className="text-sm text-slate-500">Total Residents</p>
+              <h2 className="text-2xl font-semibold mt-1">248</h2>
             </div>
 
            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
@@ -179,11 +179,11 @@ return (
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-3xl shadow">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex justify-between">
             <div>
-              <p className="text-slate-500">Checked In Today</p>
-              <h2 className="text-3xl font-bold mt-2">12</h2>
+              <p className="text-sm text-slate-500">Checked In Today</p>
+              <h2 className="text-2xl font-semibold mt-1">12</h2>
             </div>
 
             {/* <div className="bg-blue-100 p-3 rounded-2xl">
@@ -200,11 +200,11 @@ return (
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-3xl shadow">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex justify-between">
             <div>
-              <p className="text-slate-500">Vacant Rooms</p>
-              <h2 className="text-3xl font-bold mt-2">14</h2>
+              <p className="text-sm text-slate-500">Vacant Rooms</p>
+              <h2 className="text-2xl font-semibold mt-1">14</h2>
             </div>
 
             {/* <div className="bg-blue-100 p-3 rounded-2xl">
@@ -221,11 +221,11 @@ return (
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-3xl shadow">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex justify-between">
             <div>
-              <p className="text-slate-500">Pending Payments</p>
-              <h2 className="text-3xl font-bold mt-2">8</h2>
+              <p className="text-sm text-slate-500">Pending Payments</p>
+              <h2 className="text-2xl font-semibold mt-1">8</h2>
             </div>
 
          {/* <div className="bg-blue-100 p-3 rounded-2xl">

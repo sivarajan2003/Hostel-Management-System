@@ -135,10 +135,10 @@ const revenueDatasets = {
 
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">
+        <h1 className="text-2xl font-semibold text-slate-800">
           Hostel Dashboard
         </h1>
-        <p className="text-slate-500 mt-1">
+        <p className="text-sm text-slate-500 mt-1">
           Welcome back, Admin 👋
         </p>
       </div>
@@ -152,7 +152,7 @@ const revenueDatasets = {
           return (
             <div
               key={index}
-              className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 hover:shadow-lg transition"
+              className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 hover:shadow-lg transition"
             >
               <div className="flex justify-between items-start">
 
@@ -161,7 +161,7 @@ const revenueDatasets = {
                     {stat.title}
                   </p>
 
-                  <h2 className="text-3xl font-bold mt-2 text-slate-800">
+                  <h2 className="text-2xl font-semibold mt-2 text-slate-800">
                     {stat.value}
                   </h2>
 
@@ -202,11 +202,11 @@ const revenueDatasets = {
       {/* Analytics Section */}
       <div className="grid lg:grid-cols-3 gap-6 mb-8">
 
-        <div className="lg:col-span-2 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+        <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
 
   <div className="flex items-center justify-between mb-6">
     <div>
-      <h2 className="text-xl font-semibold">
+      <h2 className="text-lg font-semibold">
         Revenue Overview
       </h2>
 
@@ -314,9 +314,9 @@ const revenueDatasets = {
 
 </div>
 
-        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
 
-          <h2 className="text-xl font-semibold mb-6">
+         <h2 className="text-lg font-semibold">
             Occupancy Status
           </h2>
 
@@ -354,10 +354,10 @@ const revenueDatasets = {
       <div className="grid xl:grid-cols-3 gap-6 mb-8">
 
         {/* Check-ins */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
 
   <div className="flex items-center justify-between mb-6">
-    <h2 className="font-semibold text-lg">
+    <h2 className="text-lg font-semibold">
       Recent Check-ins
     </h2>
 
@@ -436,11 +436,11 @@ const revenueDatasets = {
 </div>
 
         {/* Complaints */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
 
   <div className="flex items-center justify-between mb-6">
 
-    <h2 className="font-semibold text-lg">
+    <h2 className="text-lg font-semibold">
       Complaints
     </h2>
 
@@ -526,11 +526,11 @@ const revenueDatasets = {
 </div>
 
         {/* Maintenance */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
 
   <div className="flex items-center justify-between mb-6">
 
-    <h2 className="font-semibold text-lg">
+    <h2 className="text-lg font-semibold">
       Maintenance
     </h2>
 
@@ -649,7 +649,7 @@ const revenueDatasets = {
       {/* Bottom Cards */}
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
           <div className="flex items-center gap-3">
             <Users
   size={32}
@@ -662,14 +662,14 @@ const revenueDatasets = {
               <h3 className="font-semibold">
                 Visitors Today
               </h3>
-              <p className="text-3xl font-bold mt-2">
+              <p className="text-2xl font-semibold mt-1">
                 38
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
           <div className="flex items-center gap-3">
             <UserCheck  size={32}
   className="
@@ -681,14 +681,14 @@ const revenueDatasets = {
               <h3 className="font-semibold">
                 Staff Attendance
               </h3>
-              <p className="text-3xl font-bold mt-2">
+              <p className="text-2xl font-semibold mt-1">
                 96%
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
           <div className="flex items-center gap-3">
             <Eye  size={32}
   className="
@@ -700,7 +700,7 @@ const revenueDatasets = {
               <h3 className="font-semibold">
                 Notifications
               </h3>
-              <p className="text-3xl font-bold mt-2">
+              <p className="text-2xl font-semibold mt-1">
                 12
               </p>
             </div>

@@ -69,11 +69,11 @@ export default function AttendanceManagement() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">
+        <h1 className="text-2xl font-semibold text-slate-800">
           Attendance Management
         </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm text-slate-500 mt-1">
           Track hostel student attendance
         </p>
       </div>
@@ -81,19 +81,19 @@ export default function AttendanceManagement() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-        <div className="bg-white p-6 rounded-3xl shadow-sm">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex justify-between">
             <div>
-              <p className="text-slate-500">
+              <p className="text-xs text-slate-500">
                 Total Residents
               </p>
-              <h2 className="text-3xl font-bold mt-2">
+              <h2 className="text-2xl font-semibold mt-1">
                 {totalStudents}
               </h2>
             </div>
 
             <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-  <Users size={22} className="
+  <Users size={18} className="
     text-blue-600
     animate-bounce
   "/>
@@ -101,10 +101,10 @@ export default function AttendanceManagement() {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-3xl shadow-sm">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex justify-between">
             <div>
-              <p className="text-slate-500">
+              <p className="text-xs text-slate-500">
                 Currently In PG
               </p>
               <h2 className="text-3xl font-bold text-green-600 mt-2">
@@ -116,7 +116,7 @@ export default function AttendanceManagement() {
              
             </div> */}
             <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-   <UserCheck className="
+   <UserCheck size={18}  className="
     text-blue-600
     animate-bounce
   " />
@@ -124,10 +124,10 @@ export default function AttendanceManagement() {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-3xl shadow-sm">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex justify-between">
             <div>
-              <p className="text-slate-500">
+              <p className="text-xs text-slate-500">
                 Outside PG
               </p>
               <h2 className="text-3xl font-bold text-red-600 mt-2">
@@ -139,7 +139,7 @@ export default function AttendanceManagement() {
               
             </div> */}
             <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
- <UserX className="
+ <UserX size={18} className="
     text-blue-600
     animate-bounce
   "/>
@@ -147,10 +147,10 @@ export default function AttendanceManagement() {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-3xl shadow-sm">
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex justify-between">
             <div>
-              <p className="text-slate-500">
+              <p className="text-xs text-slate-500">
                Occupancy %
               </p>
               <h2 className="text-3xl font-bold text-purple-600 mt-2">
@@ -162,7 +162,7 @@ export default function AttendanceManagement() {
               <CalendarDays className="text-purple-600" />
             </div> */}
              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-  <CalendarDays  className="
+  <CalendarDays size={18}   className="
     text-blue-600
     animate-bounce
   "/>
@@ -173,23 +173,23 @@ export default function AttendanceManagement() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-3xl shadow-sm p-5 mt-8">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 mt-6">
 
         <div className="grid md:grid-cols-4 gap-4">
 
           <input
             type="date"
-            className="border border-slate-200 rounded-xl p-3"
+            className="border border-slate-200 rounded-xl p-2.5 text-sm"
           />
 
-          <select className="border border-slate-200 rounded-xl p-3">
+          <select className="border border-slate-200 rounded-xl p-2.5 text-sm">
             <option>All Rooms</option>
 <option>A-101</option>
 <option>B-202</option>
 <option>F-301</option>
           </select>
 
-          <select className="border border-slate-200 rounded-xl p-3">
+          <select className="border border-slate-200 rounded-xl p-2.5 text-sm">
             <option>All Floors</option>
 <option>Ground Floor</option>
 <option>1st Floor</option>
@@ -205,7 +205,7 @@ export default function AttendanceManagement() {
             <input
               type="text"
               placeholder="Search Student"
-              className="w-full border border-slate-200 rounded-xl pl-12 py-3"
+              className="w-full border border-slate-200 rounded-xl pl-12 py-2.5 text-sm"
             />
           </div>
 
@@ -217,7 +217,7 @@ export default function AttendanceManagement() {
       <div className="hidden md:block hidden md:block bg-white rounded-3xl shadow-sm mt-8 overflow-hidden">
 
         <div className="p-6 border-b">
-          <h2 className="text-xl font-bold">
+          <h2 className="text-lg font-semibold">
             Daily Attendance
           </h2>
         </div>
@@ -228,19 +228,19 @@ export default function AttendanceManagement() {
 
             <thead className="bg-slate-50">
               <tr>
-                <th className="text-left px-6 py-4">
+                <th className="text-left px-4 py-3 text-sm font-semibold">
                   Resident
                 </th>
-                <th className="text-left px-6 py-4">
+                <th className="text-left px-4 py-3 text-sm font-semibold">
                   Gender
                 </th>
-                <th className="text-left px-6 py-4">
+                <th className="text-left px-4 py-3 text-sm font-semibold">
                   Floor
                 </th>
-                <th className="text-left px-6 py-4">
+                <th className="text-left px-4 py-3 text-sm font-semibold">
                   Room No
                 </th>
-                <th className="text-center px-6 py-4">
+                <th className="text-center  px-4 py-3 text-sm font-semibold">
                   Stay Status
                 </th>
               </tr>
@@ -253,7 +253,7 @@ export default function AttendanceManagement() {
                   key={student.id}
                   className="border-b hover:bg-slate-50"
                 >
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-3 text-sm">
 
                     <div className="flex items-center gap-3">
 
@@ -264,11 +264,11 @@ export default function AttendanceManagement() {
                       />
 
                       <div>
-                        <p className="font-semibold">
+                        <p className="text-sm font-semibold">
                           {student.name}
                         </p>
 
-                        <p className="text-sm text-slate-500">
+                        <p className="text-xs text-slate-500">
                           {student.studentId}
                         </p>
                       </div>
@@ -277,19 +277,19 @@ export default function AttendanceManagement() {
 
                   </td>
 
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-3 text-sm">
                     {student.gender}
                   </td>
 
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-3 text-sm">
                     {student.floor}
                   </td>
 
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-3 text-sm">
                    {student.residentId}
                   </td>
 
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-3 text-sm">
 
                     <div className="flex justify-center gap-2">
 
@@ -345,7 +345,7 @@ export default function AttendanceManagement() {
   {students.map((student) => (
     <div
       key={student.id}
-      className="bg-white rounded-2xl p-4 shadow-sm"
+      className="bg-white rounded-xl p-4 shadow-sm border border-slate-200"
     >
 
       <div className="flex items-center gap-3 mb-4">
@@ -357,11 +357,11 @@ export default function AttendanceManagement() {
         />
 
         <div>
-          <h3 className="font-bold">
+          <h3 className="text-sm font-semibold">
             {student.name}
           </h3>
 
-          <p className="text-sm text-slate-500">
+          <p className="text-xs text-slate-500">
             {student.residentId}
           </p>
         </div>
@@ -444,7 +444,7 @@ export default function AttendanceManagement() {
 
         <button
   onClick={() => setShowSavePopup(true)}
-  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl flex items-center gap-2"
+  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 text-sm rounded-xl flex items-center gap-2"
 >
   <Save size={18} />
   Save Attendance
@@ -456,7 +456,7 @@ export default function AttendanceManagement() {
 
     <div className="bg-white p-6 rounded-3xl w-[90%] max-w-md text-center">
 
-      <h2 className="text-2xl font-bold text-green-600">
+      <h2 className="text-xl font-semibold text-green-600">
         Attendance Saved
       </h2>
 
@@ -466,7 +466,7 @@ export default function AttendanceManagement() {
 
       <button
         onClick={() => setShowSavePopup(false)}
-        className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-xl"
+        className="mt-6 bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl"
       >
         OK
       </button>

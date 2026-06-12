@@ -3,9 +3,9 @@ export default function VacatedResidents({
   vacatedResidents,
 }) {
   return (
-    <div className="bg-white rounded-3xl p-4 md:p-6 shadow">
+    <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-lg font-semibold text-slate-800 mb-4">
         Vacated Residents
       </h2>
 
@@ -14,21 +14,21 @@ export default function VacatedResidents({
 <table className="w-full">
 
         <thead>
-          <tr className="bg-slate-100">
+          <tr className="bg-slate-50">
 
-            <th className="px-6 py-4 text-left">
+            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">
               Resident
             </th>
 
-            <th className="px-6 py-4 text-left">
+            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">
               Room
             </th>
 
-            <th className="px-6 py-4 text-left">
+            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">
               Vacated Date
             </th>
 
-            <th className="px-6 py-4 text-left">
+            <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">
               Reason
             </th>
 
@@ -42,19 +42,19 @@ export default function VacatedResidents({
               key={resident.id}
               className="border-b"
             >
-              <td className="px-6 py-5">
+              <td className="px-4 py-3 text-sm text-slate-700">
                 {resident.name}
               </td>
 
-              <td className="px-6 py-5">
+              <td className="px-4 py-3 text-sm text-slate-700">
                 {resident.room}
               </td>
 
-              <td className="px-6 py-5">
+              <td className="px-4 py-3 text-sm text-slate-700">
                 {resident.vacatedDate}
               </td>
 
-              <td className="px-6 py-5">
+              <td className="px-4 py-3 text-sm text-slate-700">
                 {resident.reason}
               </td>
             </tr>
@@ -70,14 +70,14 @@ export default function VacatedResidents({
 
     <div
       key={resident.id}
-      className="border rounded-2xl p-4 bg-slate-50"
+      className="border border-slate-200 rounded-xl p-4 bg-slate-50"
     >
 
-      <h3 className="font-bold text-lg">
+      <h3 className="text-sm font-semibold text-slate-800">
         {resident.name}
       </h3>
 
-      <div className="mt-3 space-y-2 text-sm">
+      <div className="mt-2 space-y-1 text-xs text-slate-600">
 
         <p>
           <strong>Room:</strong> {resident.room}

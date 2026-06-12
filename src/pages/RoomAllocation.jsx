@@ -7,9 +7,9 @@ export default function RoomAllocation({
     resident.gender === genderTab
 );
     return (
-    <div className="bg-white rounded-3xl p-6 shadow">
+    <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-lg font-semibold mb-4 text-slate-800">
         Room Allocation
       </h2>
 
@@ -17,12 +17,12 @@ export default function RoomAllocation({
         <div className="hidden md:block">
   <table className="w-full min-w-[700px]">
   <thead>
-    <tr className="bg-slate-100">
-      <th className="px-6 py-4 text-left font-semibold">Resident</th>
-      <th className="px-6 py-4 text-left font-semibold">Age</th>
-      <th className="px-6 py-4 text-left font-semibold">Room</th>
-      <th className="px-6 py-4 text-left font-semibold">Bed</th>
-      <th className="px-6 py-4 text-left font-semibold">Floor</th>
+    <tr className="bg-slate-50">
+      <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Resident</th>
+      <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Age</th>
+      <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Room</th>
+      <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Bed</th>
+      <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Floor</th>
     </tr>
   </thead>
 
@@ -30,23 +30,23 @@ export default function RoomAllocation({
   {filteredResidents.map((resident) => (
     <tr key={resident.id} className="border-b">
 
-      <td className="px-6 py-5">
+      <td className="px-4 py-3 text-sm text-slate-700">
         {resident.name}
       </td>
 
-      <td className="px-6 py-5">
+      <td className="px-4 py-3 text-sm text-slate-700">
         {resident.age}
       </td>
 
-      <td className="px-6 py-5">
+      <td className="px-4 py-3 text-sm text-slate-700">
         {resident.room}
       </td>
 
-      <td className="px-6 py-5">
+      <td className="px-4 py-3 text-sm text-slate-700">
         {resident.bed}
       </td>
 
-      <td className="px-6 py-5">
+      <td className="px-4 py-3 text-sm text-slate-700">
         {resident.floor}
       </td>
 
@@ -60,14 +60,14 @@ export default function RoomAllocation({
   {filteredResidents.map((resident) => (
     <div
       key={resident.id}
-      className="border rounded-2xl p-4 bg-slate-50"
+      className="border border-slate-200 rounded-xl p-4 bg-slate-50"
     >
 
-      <h3 className="font-bold text-lg">
+      <h3 className="text-sm font-semibold text-slate-800">
         {resident.name}
       </h3>
 
-      <div className="mt-3 space-y-2 text-sm">
+      <div className="mt-2 space-y-1 text-xs text-slate-600">
 
         <p>
           <strong>Age:</strong> {resident.age}

@@ -81,11 +81,11 @@ useEffect(() => {
       <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-8">
 
   <div>
-    <h1 className="text-3xl font-bold">
+    <h1 className="text-2xl font-semibold text-slate-800">
       My Hostel Profile
     </h1>
 
-    <p className="text-slate-500 mt-2">
+    <p className="text-sm text-slate-500 mt-1">
       Resident Information & Rent Details
     </p>
   </div>
@@ -128,7 +128,7 @@ useEffect(() => {
 </div>
       {/* Profile Card */}
 
-      <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
 
         {/* Top Banner */}
 
@@ -148,11 +148,11 @@ useEffect(() => {
 
             <div>
 
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-2xl font-semibold">
                 {resident.name}
               </h2>
 
-              <p className="text-slate-500">
+              <p className="text-xs text-slate-500">
                 Resident ID : PG001
               </p>
 
@@ -164,76 +164,76 @@ useEffect(() => {
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 mt-10">
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
+            <div className="bg-slate-50 p-4 rounded-xl">
               <User className="text-blue-600 mb-2" />
-              <p className="text-sm text-slate-500">Age</p>
-              <h3 className="font-semibold">
+              <p className="text-xs text-slate-500">Age</p>
+              <h3 className="text-sm font-semibold">
                 {resident.age}
               </h3>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
+            <div className="bg-slate-50 p-4 rounded-xl">
               <Phone className="text-green-600 mb-2" />
-              <p className="text-sm text-slate-500">Mobile</p>
-              <h3 className="font-semibold">
+              <p className="text-xs text-slate-500">Mobile</p>
+              <h3 className="text-sm font-semibold">
                 {resident.mobile}
               </h3>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
+            <div className="bg-slate-50 p-4 rounded-xl">
               <CreditCard className="text-purple-600 mb-2" />
-              <p className="text-sm text-slate-500">Aadhaar</p>
-              <h3 className="font-semibold">
+              <p className="text-xs text-slate-500">Aadhaar</p>
+              <h3 className="text-sm font-semibold">
                 {resident.aadhaar}
               </h3>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
+            <div className="bg-slate-50 p-4 rounded-xl">
               <Home className="text-orange-600 mb-2" />
-              <p className="text-sm text-slate-500">Room No</p>
-              <h3 className="font-semibold">
+              <p className="text-xs text-slate-500">Room No</p>
+              <h3 className="text-sm font-semibold">
                 {resident.roomNo}
               </h3>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
+            <div className="bg-slate-50 p-4 rounded-xl">
               <BedDouble className="text-pink-600 mb-2" />
-              <p className="text-sm text-slate-500">Room Type</p>
-              <h3 className="font-semibold">
+              <p className="text-xs text-slate-500">Room Type</p>
+              <h3 className="text-sm font-semibold">
                 {resident.roomType}
               </h3>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
+            <div className="bg-slate-50 p-4 rounded-xl">
               <BedDouble className="text-cyan-600 mb-2" />
-              <p className="text-sm text-slate-500">Bed No</p>
-              <h3 className="font-semibold">
+              <p className="text-xs text-slate-500">Bed No</p>
+              <h3 className="text-sm font-semibold">
                 {resident.bedNo}
               </h3>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
+            <div className="bg-slate-50 p-4 rounded-xl">
               <Calendar className="text-red-600 mb-2" />
-              <p className="text-sm text-slate-500">
+              <p className="text-xs text-slate-500">
                 Joining Date
               </p>
-              <h3 className="font-semibold">
+              <h3 className="text-sm font-semibold">
                 {resident.joinDate}
               </h3>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
+            <div className="bg-slate-50 p-4 rounded-xl">
               <IndianRupee className="text-green-600 mb-2" />
-              <p className="text-sm text-slate-500">
+              <p className="text-xs text-slate-500">
                 Monthly Rent
               </p>
-              <h3 className="font-semibold">
+              <h3 className="text-sm font-semibold">
                 ₹ {resident.rent}
               </h3>
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-2xl">
-              <p className="text-sm text-slate-500">
+            <div className="bg-slate-50 p-4 rounded-xl">
+              <p className="text-xs text-slate-500">
                 Payment Status
               </p>
 
@@ -254,7 +254,7 @@ useEffect(() => {
   <div className="bg-green-50 p-5 rounded-2xl">
     <p className="text-slate-500">Current Status</p>
 
-    <h3 className="text-xl font-bold text-green-600">
+    <h3 className="text-lg font-semibold text-green-600">
       {checkedIn ? "Checked In" : "Checked Out"}
     </h3>
   </div>
@@ -263,7 +263,7 @@ useEffect(() => {
     Check In Time
   </p>
 
-  <h3 className="font-bold text-blue-600">
+  <h3 className="text-sm font-semibold text-blue-600">
     {checkInTime.toLocaleString()}
   </h3>
 </div>
@@ -282,7 +282,7 @@ useEffect(() => {
   <div className="bg-blue-50 p-5 rounded-2xl">
     <p className="text-slate-500">Check In Date</p>
 
-    <h3 className="font-semibold">
+    <h3 className="text-sm font-semibold">
       10-Jun-2026
     </h3>
   </div>
@@ -300,7 +300,7 @@ useEffect(() => {
 </div>
 <div className="mt-10">
 
-  <h2 className="text-2xl font-bold mb-4">
+  <h2 className="text-lg font-semibold mb-4">
     Payment History
   </h2>
 
@@ -312,19 +312,19 @@ useEffect(() => {
 
         <tr className="bg-slate-100">
 
-          <th className="text-left p-4">
+          <th className="text-left p-3 text-sm font-semibold">
             Date
           </th>
 
-          <th className="text-left p-4">
+          <th className="text-left p-3 text-sm font-semibold">
             Amount
           </th>
 
-          <th className="text-left p-4">
+          <th className="text-left p-3 text-sm font-semibold">
             Method
           </th>
 
-          <th className="text-left p-4">
+          <th className="text-left p-3 text-sm font-semibold">
             Status
           </th>
 
@@ -336,21 +336,21 @@ useEffect(() => {
 
         <tr className="border-b">
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             01-Jan-2025
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             ₹4500
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             UPI
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
 
-            <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full">
+            <span className="bg-green-100 text-green-600 px-3 py-1 text-xs font-medium rounded-full">
               Paid
             </span>
 
@@ -360,21 +360,21 @@ useEffect(() => {
 
         <tr className="border-b">
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             01-Feb-2025
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             ₹4500
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             Card
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
 
-            <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full">
+            <span className="bg-green-100 text-green-600 px-3 py-1 text-xs font-medium rounded-full">
               Paid
             </span>
 
@@ -384,19 +384,19 @@ useEffect(() => {
 
         <tr>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             01-Mar-2025
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             ₹4500
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
             Pending
           </td>
 
-          <td className="p-4">
+          <td className="p-3 text-sm">
 
             <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full">
               Pending
@@ -419,14 +419,14 @@ useEffect(() => {
 
   <button
     onClick={() => setShowProfile(true)}
-    className="bg-slate-700 text-white px-6 py-3 rounded-xl"
+    className="bg-slate-700 text-white px-5 py-2.5 text-sm rounded-xl"
   >
     View Details
   </button>
 
   <button
     onClick={() => setShowPayment(true)}
-    className="bg-blue-600 text-white px-6 py-3 rounded-xl"
+    className="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl"
   >
     Pay Rent
   </button>
@@ -444,7 +444,7 @@ useEffect(() => {
 
           <div className="bg-white rounded-3xl p-8 w-full max-w-md">
 
-            <h2 className="text-2xl font-bold mb-5">
+            <h2 className="text-xl font-semibold mb-4">
               Rent Payment
             </h2>
 
@@ -453,7 +453,7 @@ useEffect(() => {
               className="w-full border p-3 rounded-xl mb-4"
             />
 
-            <select className="w-full border p-3 rounded-xl mb-4">
+            <select className="w-full border p-2.5 text-sm rounded-xl mb-4">
               <option>Monthly - ₹4500</option>
               <option>Weekly - ₹2000</option>
               <option>Yearly - ₹30000</option>
@@ -494,7 +494,7 @@ useEffect(() => {
 
     <div className="bg-white rounded-3xl p-8 w-full max-w-lg">
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-xl font-semibold mb-5">
         Resident Details
       </h2>
 

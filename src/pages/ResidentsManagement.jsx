@@ -128,16 +128,16 @@ export default function ResidentsManagement({
     <div className="min-h-screen bg-slate-50 p-6">
 <div className="mb-8 flex items-center justify-between">
   <div>
-    <h1 className="text-3xl font-bold text-slate-800">
-      Residents Management
+    <h1 className="text-2xl font-semibold text-slate-800">
+      Admin Residents Management
     </h1>
 
-    <p className="text-slate-500 mt-1">
+    <p className="text-sm text-slate-500 mt-1">
       Total Residents: {residents.length}
     </p>
   </div>
 
-  <div className="bg-blue-50 text-blue-700 px-4 py-2 rounded-xl font-medium">
+  <div className="bg-blue-50 text-blue-700 px-4 py-2 rounded-xl text-sm font-medium">
     Active Residents: {
       residents.filter(
         r => r.status === "Active"
@@ -160,7 +160,7 @@ export default function ResidentsManagement({
             onChange={(e) =>
               setSearch(e.target.value)
             }
-            className="w-full border rounded-xl pl-12 py-3"
+            className="w-full border rounded-xl pl-12 py-2.5 text-sm"
           />
         </div>
 
@@ -169,7 +169,7 @@ export default function ResidentsManagement({
           onChange={(e) =>
             setGender(e.target.value)
           }
-          className="border rounded-xl px-4"
+          className="border rounded-xl px-4 py-2.5 text-sm"
         >
           <option>All</option>
           <option>Male</option>
@@ -182,7 +182,7 @@ export default function ResidentsManagement({
           onChange={(e) =>
             setStatus(e.target.value)
           }
-          className="border rounded-xl px-4"
+          className="border rounded-xl px-4 py-2.5 text-sm"
         >
           <option>All</option>
           <option>Active</option>
@@ -191,7 +191,7 @@ export default function ResidentsManagement({
 
         <button
           onClick={() => setShowAdd(true)}
-          className="bg-blue-600 text-white px-5 py-3 rounded-xl flex items-center gap-2"
+          className="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl flex items-center gap-2"
         >
           <UserPlus size={18} />
           Add Resident
@@ -200,19 +200,19 @@ export default function ResidentsManagement({
 
       {/* Desktop Table */}
 
- <div className="hidden md:block bg-white rounded-3xl shadow overflow-hidden">
+ <div className="hidden md:block bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
 
         <table className="w-full table-fixed">
 
           <thead className="bg-slate-100">
   <tr>
-    <th className="w-[30%] p-4 text-left">Resident</th>
-    <th className="w-[10%] text-center">Room</th>
-    <th className="w-[10%] text-center">Bed</th>
-    <th className="w-[15%] text-center">Phone</th>
-    <th className="w-[10%] text-center">Rent</th>
-    <th className="w-[10%] text-center">Status</th>
-    <th className="w-[15%] text-center">Actions</th>
+    <th className="w-[30%] p-3 text-left text-sm font-semibold">Resident</th>
+    <th className="w-[10%] text-center text-sm font-semibold">Room</th>
+     <th className="w-[10%] text-center text-sm font-semibold">Room Bed</th>
+     <th className="w-[10%] text-center text-sm font-semibold">Room Phone</th>
+    <th className="w-[10%] text-center text-sm font-semibold">Room Rent</th>
+     <th className="w-[10%] text-center text-sm font-semibold">Room Status</th>
+     <th className="w-[10%] text-center text-sm font-semibold">Room Actions</th>
   </tr>
 </thead>
 

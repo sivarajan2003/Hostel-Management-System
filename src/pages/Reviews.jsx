@@ -41,13 +41,13 @@ const handleSubmit = () => {
   }, 3000);
 };
   return (
-   <div className="bg-white rounded-3xl shadow-sm p-4 md:p-6 lg:p-8 mt-8">
+   <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 mt-6">
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-lg font-semibold mb-4 text-slate-800">
          Food Reviews
       </h2>
 {successMessage && (
-  <div className="mb-5 bg-green-100 text-green-700 border border-green-300 p-4 rounded-xl">
+  <div className="mb-4 bg-green-50 text-green-700 border border-green-200 p-3 rounded-xl text-sm">
     {successMessage}
   </div>
 )}
@@ -55,7 +55,7 @@ const handleSubmit = () => {
 
         {/* Student Name */}
         <div>
-  <label className="block mb-2 font-medium">
+  <label className="block mb-2 text-sm font-medium text-slate-700">
     Resident Name
   </label>
 
@@ -69,12 +69,12 @@ const handleSubmit = () => {
       })
     }
     placeholder="Enter Resident Name"
-    className="w-full border border-slate-300 rounded-xl px-4 py-3"
+    className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
   />
 </div>
 
 <div>
-  <label className="block mb-2 font-medium">
+  <label className="block mb-2 text-sm font-medium text-slate-700">
     Room Number
   </label>
 
@@ -88,12 +88,12 @@ const handleSubmit = () => {
       })
     }
     placeholder="A-101"
-    className="w-full border border-slate-300 rounded-xl px-4 py-3"
+    className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
   />
 </div>
 
 <div>
-  <label className="block mb-2 font-medium">
+  <label className="block mb-2 text-sm font-medium text-slate-700">
     Food Category
   </label>
 
@@ -105,7 +105,7 @@ const handleSubmit = () => {
         foodType: e.target.value,
       })
     }
-    className="w-full border border-slate-300 rounded-xl px-4 py-3"
+    className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm"
   >
     <option value="">
       Select Food Type
@@ -120,7 +120,7 @@ const handleSubmit = () => {
 
         {/* Rating */}
         <div>
-          <label className="block mb-2 font-medium">
+          <label className="block mb-2 text-sm font-medium text-slate-700">
             Food Rating
           </label>
 
@@ -133,7 +133,7 @@ const handleSubmit = () => {
                 onClick={() => setRating(star)}
               >
                 <Star
-                  size={28}
+                  size={22}
                   className={
                     star <= rating
                       ? "fill-yellow-400 text-yellow-400"
@@ -152,7 +152,7 @@ const handleSubmit = () => {
       {/* Review Content */}
       <div className="mt-5">
 
-        <label className="block mb-2 font-medium">
+        <label className="block mb-2 text-sm font-medium text-slate-700">
           Review Content
         </label>
 
@@ -166,7 +166,7 @@ const handleSubmit = () => {
     })
   }
   placeholder="Write your food review..."
-  className="w-full border border-slate-300 rounded-xl px-4 py-3 resize-none"
+  className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm resize-none"
 />
 
       </div>
@@ -185,14 +185,14 @@ const handleSubmit = () => {
 
     setRating(0);
   }}
-  className="px-6 py-3 border border-slate-300 rounded-xl hover:bg-slate-100"
+  className="px-5 py-2.5 text-sm border border-slate-300 rounded-xl hover:bg-slate-100"
 >
   Cancel
 </button>
 
         <button
   onClick={handleSubmit}
-  className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700"
+  className="px-5 py-2.5 text-sm bg-blue-600 text-white rounded-xl hover:bg-blue-700"
 >
   Submit Review
 </button>

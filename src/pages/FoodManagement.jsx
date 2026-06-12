@@ -75,18 +75,18 @@ const [schedule, setSchedule] = useState([
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
 
         <div>
-          <h1 className="text-3xl font-bold text-slate-800">
+          <h1 className="text-2xl font-semibold text-slate-800">
             Food Management
           </h1>
 
-          <p className="text-slate-500 mt-2">
+          <p className="text-sm text-slate-500 mt-1">
             Manage hostel food schedule and weekly menu
           </p>
         </div>
 
 <button
   onClick={() => setShowMenuPopup(true)}
-  className="bg-blue-600 text-white px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-blue-700"
+ className="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl flex items-center gap-2 hover:bg-blue-700"
 >
             <Plus size={18} />
           Add Menu
@@ -97,81 +97,81 @@ const [schedule, setSchedule] = useState([
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div className="flex justify-between items-center">
 
             <div>
-              <p className="text-slate-500">
+              <p className="text-sm text-slate-500">
                 Breakfast
               </p>
 
-              <h2 className="text-2xl font-bold mt-2">
+              <h2 className="text-xl font-semibold mt-1">
                 Idly + Sambar
               </h2>
             </div>
 
-            <div className="bg-blue-100 p-4 rounded-2xl">
-              <Coffee className="text-blue-600" />
+            <div className="bg-blue-100 p-3 rounded-xl">
+              <Coffee size={18} className="text-blue-600" />
             </div>
 
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div className="flex justify-between items-center">
 
             <div>
-              <p className="text-slate-500">
+              <p className="text-sm text-slate-500">
                 Lunch
               </p>
 
-              <h2 className="text-2xl font-bold mt-2">
+              <h2 className="text-xl font-semibold mt-1">
                 Meals
               </h2>
             </div>
 
             <div className="bg-green-100 p-4 rounded-2xl">
-              <Utensils className="text-green-600" />
+              <Utensils size={18} className="text-green-600" />
             </div>
 
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div className="flex justify-between items-center">
 
             <div>
-              <p className="text-slate-500">
+              <p className="text-sm text-slate-500">
                 Snacks
               </p>
 
-              <h2 className="text-2xl font-bold mt-2">
+              <h2 className="text-xl font-semibold mt-1">
                 Biscuits + Tea
               </h2>
             </div>
 
             <div className="bg-yellow-100 p-4 rounded-2xl">
-              <Cookie className="text-yellow-600" />
+              <Cookie size={18} className="text-yellow-600" />
             </div>
 
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div className="flex justify-between items-center">
 
             <div>
-              <p className="text-slate-500">
+              <p className="text-sm text-slate-500">
                 Dinner
               </p>
 
-              <h2 className="text-2xl font-bold mt-2">
+              <h2 className="text-xl font-semibold mt-1">
                 Chapathi
               </h2>
             </div>
 
             <div className="bg-red-100 p-4 rounded-2xl">
-              <Soup className="text-red-600" />
+              <Soup size={18} className="text-red-600" />
             </div>
 
           </div>
@@ -180,9 +180,9 @@ const [schedule, setSchedule] = useState([
       </div>
 
       {/* Food Schedule */}
-      <div className="bg-white rounded-3xl p-6 shadow-sm mt-8">
+      <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 mt-6">
 
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-lg font-semibold mb-4">
           Today's Food Schedule
         </h2>
 
@@ -195,11 +195,11 @@ const [schedule, setSchedule] = useState([
             >
 
               <div>
-                <h3 className="font-semibold text-lg">
+                <h3 className="font-semibold text-sm">
                   {item.meal}
                 </h3>
 
-                <p className="text-slate-500">
+                <p className="text-sm text-slate-500">
                   {item.time}
                 </p>
               </div>
@@ -216,9 +216,9 @@ const [schedule, setSchedule] = useState([
       </div>
 
       {/* Weekly Menu */}
-      <div className="bg-white rounded-3xl p-6 shadow-sm mt-8">
+      <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 mt-6">
 
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-lg font-semibold mb-4">
           Weekly Menu Planner
         </h2>
 
@@ -228,10 +228,10 @@ const [schedule, setSchedule] = useState([
             <thead className="bg-slate-100">
 
               <tr>
-                <th className="p-4 text-left">Day</th>
-                <th className="p-4 text-left">Breakfast</th>
-                <th className="p-4 text-left">Lunch</th>
-                <th className="p-4 text-left">Dinner</th>
+                <th className="p-3 text-left text-sm font-semibold">Day</th>
+                <th className="p-3 text-left text-sm font-semibold">Breakfast</th>
+                <th className="p-3 text-left text-sm font-semibold">Lunch</th>
+                <th className="p-3 text-left text-sm font-semibold">Dinner</th>
               </tr>
 
             </thead>
@@ -239,35 +239,35 @@ const [schedule, setSchedule] = useState([
             <tbody>
 
               <tr className="border-b">
-                <td className="p-4">Monday</td>
+                <td className="p-3 text-sm">Monday</td>
                 <td>Idly</td>
                 <td>Meals</td>
                 <td>Chapathi</td>
               </tr>
 
               <tr className="border-b">
-                <td className="p-4">Tuesday</td>
+                <td className="p-3 text-sm">Tuesday</td>
                 <td>Pongal</td>
                 <td>Rice</td>
                 <td>Dosa</td>
               </tr>
 
               <tr className="border-b">
-                <td className="p-4">Wednesday</td>
+                <td className="p-3 text-sm">Wednesday</td>
                 <td>Poori</td>
                 <td>Biryani</td>
                 <td>Parotta</td>
               </tr>
 
               <tr className="border-b">
-                <td className="p-4">Thursday</td>
+                <td className="p-3 text-sm">Thursday</td>
                 <td>Upma</td>
                 <td>Meals</td>
                 <td>Chapathi</td>
               </tr>
 
               <tr className="border-b">
-                <td className="p-4">Friday</td>
+                <td className="p-3 text-sm">Friday</td>
                 <td>Dosa</td>
                 <td>Variety Rice</td>
                 <td>Parotta</td>
@@ -280,8 +280,8 @@ const [schedule, setSchedule] = useState([
         </div>
 <div className="md:hidden space-y-4">
 
-  <div className="bg-slate-50 p-4 rounded-2xl">
-    <h3 className="font-bold text-lg">Monday</h3>
+  <div className="bg-slate-50 p-4 rounded-xl">
+    <h3 className="font-semibold text-sm">Monday</h3>
 
     <div className="mt-3 space-y-2">
       <p><span className="font-semibold">Breakfast:</span> Idly</p>
@@ -290,8 +290,8 @@ const [schedule, setSchedule] = useState([
     </div>
   </div>
 
-  <div className="bg-slate-50 p-4 rounded-2xl">
-    <h3 className="font-bold text-lg">Tuesday</h3>
+  <div className="bg-slate-50 p-4 rounded-xl">
+    <h3 className="font-semibold text-sm">Tuesday</h3>
 
     <div className="mt-3 space-y-2">
       <p><span className="font-semibold">Breakfast:</span> Pongal</p>
@@ -300,8 +300,8 @@ const [schedule, setSchedule] = useState([
     </div>
   </div>
 
-  <div className="bg-slate-50 p-4 rounded-2xl">
-    <h3 className="font-bold text-lg">Wednesday</h3>
+  <div className="bg-slate-50 p-4 rounded-xl">
+    <h3 className="font-semibold text-sm">Wednesday</h3>
 
     <div className="mt-3 space-y-2">
       <p><span className="font-semibold">Breakfast:</span> Poori</p>
@@ -316,13 +316,13 @@ const [schedule, setSchedule] = useState([
       {/* Reviews */}
       <div className="mt-8">
 
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-lg font-semibold mb-4">
           Student Food Reviews
         </h2>
 
        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-          <div className="bg-white p-5 rounded-3xl shadow-sm">
+          <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
 
             <div className="flex items-center gap-2 mb-3">
               <Star className="text-yellow-500 fill-yellow-500" size={18}/>
@@ -332,17 +332,17 @@ const [schedule, setSchedule] = useState([
               <Star className="text-yellow-500 fill-yellow-500" size={18}/>
             </div>
 
-            <h3 className="font-bold">
+            <h3 className="text-sm font-semibold">
               Arun Kumar
             </h3>
 
-            <p className="text-slate-500 mt-2">
+            <p className="text-sm text-slate-500 mt-1">
               Breakfast quality was excellent.
             </p>
 
           </div>
 
-          <div className="bg-white p-5 rounded-3xl shadow-sm">
+          <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
 
             <div className="flex items-center gap-2 mb-3">
               <Star className="text-yellow-500 fill-yellow-500" size={18}/>
@@ -351,17 +351,17 @@ const [schedule, setSchedule] = useState([
               <Star className="text-yellow-500 fill-yellow-500" size={18}/>
             </div>
 
-            <h3 className="font-bold">
+            <h3 className="text-sm font-semibold">
               Karthik
             </h3>
 
-            <p className="text-slate-500 mt-2">
+            <p className="text-sm text-slate-500 mt-1">
               Lunch was very tasty and fresh.
             </p>
 
           </div>
 
-          <div className="bg-white p-5 rounded-3xl shadow-sm">
+          <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
 
             <div className="flex items-center gap-2 mb-3">
               <Star className="text-yellow-500 fill-yellow-500" size={18}/>
@@ -369,11 +369,11 @@ const [schedule, setSchedule] = useState([
               <Star className="text-yellow-500 fill-yellow-500" size={18}/>
             </div>
 
-            <h3 className="font-bold">
+            <h3 className="text-sm font-semibold">
               Praveen
             </h3>
 
-            <p className="text-slate-500 mt-2">
+            <p className="text-sm text-slate-500 mt-1">
               Need more snack varieties.
             </p>
 
@@ -387,7 +387,7 @@ const [schedule, setSchedule] = useState([
 
     <div className="bg-white rounded-3xl w-full max-w-lg p-6">
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-lg font-semibold mb-4">
         Add Food Menu
       </h2>
 
@@ -396,7 +396,7 @@ const [schedule, setSchedule] = useState([
         <input
           type="text"
           placeholder="Meal Name"
-          className="w-full border rounded-xl p-3"
+          className="w-full border rounded-xl p-2.5 text-sm"
           onChange={(e) =>
             setMenuData({
               ...menuData,
@@ -407,7 +407,7 @@ const [schedule, setSchedule] = useState([
 
         <input
           type="time"
-          className="w-full border rounded-xl p-3"
+          className="w-full border rounded-xl p-2.5 text-sm"
           onChange={(e) =>
             setMenuData({
               ...menuData,
@@ -419,7 +419,7 @@ const [schedule, setSchedule] = useState([
         <input
           type="text"
           placeholder="Menu Items"
-          className="w-full border rounded-xl p-3"
+          className="w-full border rounded-xl p-2.5 text-sm"
           onChange={(e) =>
             setMenuData({
               ...menuData,

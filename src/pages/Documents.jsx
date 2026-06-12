@@ -28,17 +28,17 @@ const [newDoc, setNewDoc] = useState({
   file: null,
 });
   return (
-    <div className="bg-white p-4 md:p-6 rounded-3xl shadow">
+    <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
 
-        <h2 className="text-xl md:text-2xl font-bold">
+        <h2 className="text-lg font-semibold text-slate-800">
           Resident Documents
         </h2>
 
         <button
   onClick={() => setShowUpload(true)}
-  className="bg-blue-600 text-white px-4 py-2 rounded-xl"
+  className="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl"
 >
   Upload Document
 </button>
@@ -50,23 +50,23 @@ const [newDoc, setNewDoc] = useState({
        {documents.map((doc) => (
   <div
     key={doc.id}
-    className="border rounded-2xl p-4 hover:bg-slate-50"
+    className="border border-slate-200 rounded-xl p-3 hover:bg-slate-50"
   >
     <div className="flex items-center justify-between">
 
       <div className="flex items-center gap-3">
 
         <FileText
-          size={22}
+          size={18}
           className="text-red-500"
         />
 
         <div>
-          <h3 className="font-semibold">
+          <h3 className="text-sm font-semibold text-slate-800">
             {doc.resident}
           </h3>
 
-          <p className="text-sm text-slate-500">
+          <p className="text-xs text-slate-500">
             {doc.fileName}
           </p>
         </div>
@@ -77,17 +77,17 @@ const [newDoc, setNewDoc] = useState({
 
         <button
           onClick={() => setViewDoc(doc)}
-          className="p-2 bg-slate-100 rounded-lg"
+          className="p-2 bg-slate-100 rounded-lg hover:bg-slate-200"
         >
-          <Eye size={18} />
+          <Eye size={16} />
         </button>
 
         <a
           href={doc.fileUrl}
           download={doc.fileName}
-          className="p-2 bg-slate-100 rounded-lg"
+          className="p-2 bg-slate-100 rounded-lg hover:bg-slate-200"
         >
-          <Download size={18} />
+          <Download size={16} />
         </a>
 
       </div>
@@ -101,18 +101,18 @@ const [newDoc, setNewDoc] = useState({
 {viewDoc && (
   <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
 
-    <div className="bg-white rounded-3xl p-6 w-[90%] max-w-3xl">
+    <div className="bg-white rounded-2xl p-5 w-[90%] max-w-3xl shadow-sm">
 
       <div className="flex justify-between items-center mb-4">
 
-        <h2 className="text-xl font-bold">
+        <h2 className="text-lg font-semibold text-slate-800">
           {viewDoc.fileName}
         </h2>
 
         <button
           onClick={() => setViewDoc(null)}
         >
-          <X />
+       <X size={18} />
         </button>
 
       </div>
@@ -130,9 +130,9 @@ const [newDoc, setNewDoc] = useState({
 {showUpload && (
   <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
 
-    <div className="bg-white rounded-3xl p-6 w-[90%] max-w-lg">
+    <div className="bg-white rounded-2xl p-5 w-[90%] max-w-lg shadow-sm">
 
-      <h2 className="text-2xl font-bold mb-5">
+      <h2 className="text-lg font-semibold mb-4 text-slate-800">
         Upload Document
       </h2>
 
@@ -141,7 +141,7 @@ const [newDoc, setNewDoc] = useState({
         <input
           type="text"
           placeholder="Resident Name"
-          className="w-full border rounded-xl p-3"
+          className="w-full border border-slate-300 rounded-xl p-2.5 text-sm"
           onChange={(e) =>
             setNewDoc({
               ...newDoc,
@@ -151,7 +151,7 @@ const [newDoc, setNewDoc] = useState({
         />
 
         <select
-          className="w-full border rounded-xl p-3"
+          className="w-full border border-slate-300 rounded-xl p-2.5 text-sm"
           onChange={(e) =>
             setNewDoc({
               ...newDoc,
@@ -169,7 +169,7 @@ const [newDoc, setNewDoc] = useState({
 
         <input
           type="file"
-          className="w-full border rounded-xl p-3"
+          className="w-full border border-slate-300 rounded-xl p-2.5 text-sm"
           onChange={(e) =>
             setNewDoc({
               ...newDoc,
@@ -184,7 +184,7 @@ const [newDoc, setNewDoc] = useState({
 
         <button
           onClick={() => setShowUpload(false)}
-          className="border px-5 py-2 rounded-xl"
+          className="border border-slate-300 px-5 py-2.5 text-sm rounded-xl"
         >
           Cancel
         </button>
@@ -208,7 +208,7 @@ const [newDoc, setNewDoc] = useState({
 
             setShowUpload(false);
           }}
-          className="bg-blue-600 text-white px-5 py-2 rounded-xl"
+          className="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl"
         >
           Save
         </button>

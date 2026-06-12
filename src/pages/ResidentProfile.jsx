@@ -60,7 +60,7 @@ const [paymentSuccess, setPaymentSuccess] =
   return (
     <div className="p-4 md:p-6 bg-slate-50 min-h-screen">
      {/* Header */}
-<div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 md:p-8 shadow text-white">
+<div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-5 md:p-6 shadow-sm text-white">
 
   <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
 
@@ -74,11 +74,11 @@ const [paymentSuccess, setPaymentSuccess] =
 
       <div>
 
-        <h1 className="text-3xl md:text-4xl font-bold">
+        <h1 className="text-2xl md:text-3xl font-semibold">
           Welcome Back, Arun Kumar 👋
         </h1>
 
-        <p className="mt-2 text-white/90">
+        <p className="mt-1 text-sm text-white/90">
           Resident ID : RES001
         </p>
 
@@ -137,27 +137,27 @@ const [paymentSuccess, setPaymentSuccess] =
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-6">
 
-        <div className="bg-white rounded-3xl p-5 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <Home className="text-blue-600 mb-3" />
-          <h3 className="text-slate-500">Room Number</h3>
-          <p className="text-3xl font-bold mt-2">A-101</p>
+          <h3 className="text-sm text-slate-500">Room Number</h3>
+          <p className="text-2xl font-semibold mt-1">A-101</p>
         </div>
 
-        <div className="bg-white rounded-3xl p-5 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <BedDouble className="text-green-600 mb-3" />
-          <h3 className="text-slate-500">Bed Number</h3>
-          <p className="text-3xl font-bold mt-2">Bed-01</p>
+          <h3 className="text-sm text-slate-500">Bed Number</h3>
+          <p className="text-2xl font-semibold mt-1">Bed-01</p>
         </div>
 
-        <div className="bg-white rounded-3xl p-5 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <IndianRupee className="text-orange-600 mb-3" />
-          <h3 className="text-slate-500">Monthly Rent</h3>
-          <p className="text-3xl font-bold mt-2">₹8,500</p>
+          <h3 className="text-sm text-slate-500">Monthly Rent</h3>
+          <p className="text-2xl font-semibold mt-1">₹8,500</p>
         </div>
 
-        <div className="bg-white rounded-3xl p-5 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <CheckCircle className="text-purple-600 mb-3" />
-          <h3 className="text-slate-500">Current Status</h3>
+          <h3 className="text-sm text-slate-500">Current Status</h3>
 
           <p
             className={`text-2xl font-bold ${
@@ -176,7 +176,7 @@ const [paymentSuccess, setPaymentSuccess] =
       {/* Check In / Check Out */}
       {/* <div className="bg-white rounded-3xl p-6 shadow-sm mt-6">
 
-        <h2 className="text-xl font-bold mb-5">
+        <h2 className="text-lg font-semibold mb-4">
           Attendance Actions
         </h2>
 
@@ -203,34 +203,34 @@ const [paymentSuccess, setPaymentSuccess] =
       {/* Personal Details */}
       <div className="bg-white rounded-3xl p-6 shadow-sm mt-6">
 
-        <h2 className="text-xl font-bold mb-5">
+        <h2 className="text-lg font-semibold mb-4">
           Personal Information
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
 
-          <div className="bg-slate-50 rounded-2xl p-5">
+          <div className="bg-slate-50 rounded-xl p-4">
             <User className="mb-3 text-blue-600" />
-            <h3 className="font-semibold">Gender</h3>
-            <p>Male</p>
+            <h3 className="text-sm font-semibold">Gender</h3>
+            <p className="text-sm text-slate-600">Male</p>
           </div>
 
-          <div className="bg-slate-50 rounded-2xl p-5">
+          <div className="bg-slate-50 rounded-xl p-4">
             <Phone className="mb-3 text-green-600" />
-            <h3 className="font-semibold">Mobile</h3>
-            <p>9876543210</p>
+            <h3 className="text-sm font-semibold">Mobile</h3>
+            <p className="text-sm text-slate-600">9876543210</p>
           </div>
 
-          <div className="bg-slate-50 rounded-2xl p-5">
+          <div className="bg-slate-50 rounded-xl p-4">
             <Mail className="mb-3 text-red-600" />
-            <h3 className="font-semibold">Email</h3>
-            <p>arun@gmail.com</p>
+            <h3 className="text-sm font-semibold">Email</h3>
+            <p className="text-sm text-slate-600">arun@gmail.com</p>
           </div>
 
-          <div className="bg-slate-50 rounded-2xl p-5">
+          <div className="bg-slate-50 rounded-xl p-4">
             <MapPin className="mb-3 text-purple-600" />
-            <h3 className="font-semibold">Address</h3>
-            <p>Salem, Tamil Nadu</p>
+            <h3 className="text-sm font-semibold">Address</h3>
+            <p className="text-sm text-slate-600">Salem, Tamil Nadu</p>
           </div>
 
         </div>
@@ -240,38 +240,38 @@ const [paymentSuccess, setPaymentSuccess] =
       {/* Rent Information */}
       <div className="bg-white rounded-3xl p-6 shadow-sm mt-6">
 
-        <h2 className="text-xl font-bold mb-5">
+        <h2 className="text-lg font-semibold mb-4">
           Rent Information
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
           <div className="bg-green-50 rounded-2xl p-5">
-            <h3 className="font-semibold">
+            <h3 className="text-sm font-semibold">
               Monthly Rent
             </h3>
 
-            <p className="text-3xl font-bold mt-2">
+            <p className="text-2xl font-semibold mt-1">
               ₹8,500
             </p>
           </div>
 
           <div className="bg-blue-50 rounded-2xl p-5">
-            <h3 className="font-semibold">
+            <h3 className="text-sm font-semibold">
               Due Date
             </h3>
 
-            <p className="text-3xl font-bold mt-2">
+            <p className="text-2xl font-semibold mt-1">
               05
             </p>
           </div>
 
           <div className="bg-red-50 rounded-2xl p-5">
-            <h3 className="font-semibold">
+            <h3 className="text-sm font-semibold">
               Payment Status
             </h3>
 
-            <p className="text-green-600 text-2xl font-bold mt-2">
+            <p className="text-green-600 text-xl font-semibold mt-1">
               Paid
             </p>
           </div>
@@ -281,19 +281,19 @@ const [paymentSuccess, setPaymentSuccess] =
       </div>
 <div className="bg-white rounded-3xl p-6 shadow-sm mt-6">
 
-  <h2 className="text-xl font-bold mb-5">
+  <h2 className="text-lg font-semibold mb-4">
     Rent Fee Plans
   </h2>
 
   <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-    <div className="border rounded-2xl p-5">
+    <div className="border rounded-xl p-4">
 
-      <h3 className="font-bold text-lg">
+      <h3 className="font-semibold text-base">
         Monthly
       </h3>
 
-      <p className="text-3xl font-bold mt-2">
+      <p className="text-2xl font-semibold mt-1">
         ₹8,500
       </p>
 
@@ -302,20 +302,20 @@ const [paymentSuccess, setPaymentSuccess] =
           setSelectedPlan("Monthly");
           setShowPaymentPopup(true);
         }}
-        className="mt-4 w-full bg-blue-600 text-white py-3 rounded-xl"
+        className="mt-4 w-full bg-blue-600 text-white py-2.5 text-sm rounded-xl"
       >
         Pay Now
       </button>
 
     </div>
 
-    <div className="border rounded-2xl p-5">
+    <div className="border rounded-xl p-4">
 
-      <h3 className="font-bold text-lg">
+      <h3 className="font-semibold text-base">
         Quarterly
       </h3>
 
-      <p className="text-3xl font-bold mt-3">
+      <p className="text-2xl font-semibold mt-1">
         ₹25,500
       </p>
 
@@ -331,13 +331,13 @@ const [paymentSuccess, setPaymentSuccess] =
 
     </div>
 
-    <div className="border rounded-2xl p-5">
+    <div className="border rounded-xl p-4">
 
-      <h3 className="font-bold text-lg">
+      <h3 className="font-semibold text-base">
         Yearly
       </h3>
 
-      <p className="text-3xl font-bold mt-3">
+     <p className="text-2xl font-semibold mt-1">
         ₹1,02,000
       </p>
 
@@ -392,7 +392,7 @@ const [paymentSuccess, setPaymentSuccess] =
 
       <div
         key={index}
-        className="border rounded-2xl p-4 hover:bg-slate-50 transition"
+        className="border rounded-xl p-3 text-sm hover:bg-slate-50 transition"
       >
         {activity}
       </div>
@@ -408,7 +408,7 @@ const [paymentSuccess, setPaymentSuccess] =
 
     <div className="bg-white rounded-3xl p-6 w-[95%] max-w-lg">
 
-      <h2 className="text-2xl font-bold mb-5">
+     <h2 className="text-xl font-semibold mb-4">
         Rent Payment
       </h2>
 
@@ -421,7 +421,7 @@ const [paymentSuccess, setPaymentSuccess] =
           <input
             value="Arun Kumar"
             readOnly
-            className="w-full border rounded-xl p-3 mt-1"
+            className="w-full border rounded-xl p-2.5 mt-1 text-sm"
           />
         </div>
 
@@ -432,7 +432,7 @@ const [paymentSuccess, setPaymentSuccess] =
           <input
             value="A-101"
             readOnly
-            className="w-full border rounded-xl p-3 mt-1"
+            className="w-full border rounded-xl p-2.5 mt-1 text-sm"
           />
         </div>
 
@@ -443,7 +443,7 @@ const [paymentSuccess, setPaymentSuccess] =
           <input
             value="XXXX XXXX 4567"
             readOnly
-            className="w-full border rounded-xl p-3 mt-1"
+            className="w-full border rounded-xl p-2.5 mt-1 text-sm"
           />
         </div>
 
@@ -454,7 +454,7 @@ const [paymentSuccess, setPaymentSuccess] =
           <input
             value={selectedPlan}
             readOnly
-            className="w-full border rounded-xl p-3 mt-1"
+            className="w-full border rounded-xl p-2.5 mt-1 text-sm"
           />
         </div>
 
@@ -463,7 +463,7 @@ const [paymentSuccess, setPaymentSuccess] =
             Payment Method
           </label>
 
-          <select className="w-full border rounded-xl p-3 mt-1">
+          <select className="w-full border rounded-xl p-2.5 mt-1 text-sm">
             <option>UPI</option>
             <option>Credit Card</option>
             <option>Debit Card</option>

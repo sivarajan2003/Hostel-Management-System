@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Residents from "./pages/Residents";
 import ResidentsManagement from "./pages/ResidentsManagement";
 import ResidentProfile from "./pages/ResidentProfile";
+import VacatedResident from "./pages/VacatedResident";
 
 export default function App() {
   // Load initial state from local storage or defaults
@@ -293,6 +294,9 @@ if (!isLoggedIn) {
 
   )
 
+)}
+{page === "vacatedResident" && (
+  <VacatedResident />
 )}
 {page === "profile" && (
   <ResidentProfile />

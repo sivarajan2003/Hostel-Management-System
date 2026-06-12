@@ -6,7 +6,7 @@ import {
   Utensils,
   Star,
   Settings,
-  Home,
+  Home,LogOut ,
    Building2,
      X,
        BedDouble,
@@ -94,7 +94,16 @@ export default function Sidebar({
   <Home size={20} />
   {!collapsed && <span>Residents</span>}
 </div>
-
+<div
+  title="Vacated Resident"
+  className={`sidebar-item ${
+    page === "vacatedResident" ? "active" : ""
+  }`}
+  onClick={() => setPage("vacatedResident")}
+>
+  <LogOut size={20} />
+  {!collapsed && <span>Vacated Resident</span>}
+</div>
 <div
   title="Attendance"
   className={`sidebar-item ${page === "attendance" ? "active" : ""}`}
