@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#2563EB"/>
+
+  <!-- Building -->
+  <rect x="16" y="18" width="32" height="34" rx="2" fill="white"/>
+
+  <!-- Roof -->
+  <polygon points="32,10 12,24 16,24 16,18 48,18 48,24 52,24" fill="white"/>
+
+  <!-- Door -->
+  <rect x="28" y="38" width="8" height="14" fill="#2563EB"/>
+
+  <!-- Windows -->
+  <rect x="22" y="24" width="5" height="5" fill="#2563EB"/>
+  <rect x="37" y="24" width="5" height="5" fill="#2563EB"/>
+  <rect x="22" y="32" width="5" height="5" fill="#2563EB"/>
+  <rect x="37" y="32" width="5" height="5" fill="#2563EB"/>
+</svg>
