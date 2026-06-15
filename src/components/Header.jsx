@@ -45,6 +45,13 @@ export default function Header({
   setIsLoggedIn
 }) {
   const [showMenu, setShowMenu] = useState(false);
+
+  // Get logged-in user from localStorage
+  const storedUser = (() => {
+    try { return JSON.parse(localStorage.getItem("user") || "{}"); }
+    catch { return {}; }
+  })();
+  const displayName = storedUser?.username || storedUser?.email || "Admin";
   return (
     <div className="top-header flex items-center justify-between px-4 md:px-6 py-3">
 
@@ -67,7 +74,7 @@ export default function Header({
     </div>
 
     <span className="hidden sm:block font-medium">
-      Admin
+      {displayName}
     </span>
 
     <ChevronDown
@@ -94,6 +101,9 @@ export default function Header({
 
       <button
         onClick={() => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          localStorage.removeItem("isLoggedIn");
           setIsLoggedIn(false);
           setShowMenu(false);
         }}

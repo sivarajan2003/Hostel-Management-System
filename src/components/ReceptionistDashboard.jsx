@@ -4,13 +4,12 @@ import {
   IndianRupee,
   Building2,
   UserCheck,
-  UserPlus,
   AlertTriangle,
   Wrench,
   Eye,
-  TrendingUp,ChevronDown,
+  TrendingUp, ChevronDown,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   AreaChart,
   Area,
@@ -20,58 +19,54 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { dashboardApi } from "../utils/api";
 
 export default function Dashboard() {
   const [filter, setFilter] = useState("Today");
   const [revenueFilter, setRevenueFilter] = useState("This Month");
   const [complaintFilter, setComplaintFilter] = useState("Recent");
-const [maintenanceFilter, setMaintenanceFilter] = useState("Recent");
-  const stats = [
-   {
-  title: "Total Residents",
-  value: "248",
-  change: "+12%",
-  icon: Users,
-  delay: "0s",
-},
-{
-  title: "Occupancy Rate",
-  value: "94%",
-  change: "+4%",
-  icon: BedDouble,
-  delay: "0.5s",
-},
-{
-  title: "Monthly Revenue",
-  value: "₹4.8L",
-  change: "+18%",
-  icon: IndianRupee,
-  delay: "1s",
-},
-{
-  title: "Vacant Rooms",
-  value: "18",
-  change: "-5%",
-  icon: Building2,
-  delay: "1.5s",
-},
-  ];
+  const [maintenanceFilter, setMaintenanceFilter] = useState("Recent");
+  const [apiStats, setApiStats] = useState(null);
+  const [revenueData, setRevenueData] = useState([]);
+  const [checkins, setCheckins] = useState([]);
 
-  const checkins = [
+  useEffect(() => {
+    dashboardApi.getStats().then(setApiStats).catch(() => {});
+    dashboardApi.getRecentCheckins().then(setCheckins).catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    dashboardApi.getRevenue(revenueFilter).then(setRevenueData).catch(() => {});
+  }, [revenueFilter]);
+
+  const stats = [
     {
-      name: "Rahul Kumar",
-      room: "A-204",
-      time: "09:15 AM",
+      title: "Total Residents",
+      value: apiStats ? String(apiStats.totalResidents) : "—",
+      change: "+12%",
+      icon: Users,
+      delay: "0s",
     },
     {
-      name: "Priya Sharma",
-      room: "B-110",
-      time: "10:05 AM",
+      title: "Occupancy Rate",
+      value: apiStats ? `${apiStats.occupancyRate}%` : "—",
+      change: "+4%",
+      icon: BedDouble,
+      delay: "0.5s",
     },
     {
-      name: "Arun Raj",
-      room: "C-307",
-      time: "11:40 AM",
+      title: "Visitors Today",
+      value: apiStats ? String(apiStats.todayVisitors) : "—",
+      change: "",
+      icon: IndianRupee,
+      delay: "1s",
+    },
+    {
+      title: "Vacant Rooms",
+      value: apiStats ? String(apiStats.availableRooms) : "—",
+      change: "",
+      icon: Building2,
+      delay: "1.5s",
     },
   ];
 
@@ -89,46 +84,10 @@ const [maintenanceFilter, setMaintenanceFilter] = useState("Recent");
       status: "Resolved",
     },
   ];
-const revenueData = [
-  { month: "Jan", revenue: 120000 },
-  { month: "Feb", revenue: 180000 },
-  { month: "Mar", revenue: 220000 },
-  { month: "Apr", revenue: 270000 },
-  { month: "May", revenue: 320000 },
-  { month: "Jun", revenue: 410000 },
-];
 const revenueDatasets = {
-  "This Week": [
-    { month: "Mon", revenue: 20000 },
-    { month: "Tue", revenue: 25000 },
-    { month: "Wed", revenue: 18000 },
-    { month: "Thu", revenue: 30000 },
-    { month: "Fri", revenue: 28000 },
-    { month: "Sat", revenue: 35000 },
-    { month: "Sun", revenue: 40000 },
-  ],
-
-  "This Month": [
-    { month: "Week 1", revenue: 120000 },
-    { month: "Week 2", revenue: 180000 },
-    { month: "Week 3", revenue: 220000 },
-    { month: "Week 4", revenue: 280000 },
-  ],
-
-  "This Year": [
-    { month: "Jan", revenue: 120000 },
-    { month: "Feb", revenue: 180000 },
-    { month: "Mar", revenue: 220000 },
-    { month: "Apr", revenue: 270000 },
-    { month: "May", revenue: 320000 },
-    { month: "Jun", revenue: 410000 },
-    { month: "Jul", revenue: 450000 },
-    { month: "Aug", revenue: 490000 },
-    { month: "Sep", revenue: 520000 },
-    { month: "Oct", revenue: 580000 },
-    { month: "Nov", revenue: 640000 },
-    { month: "Dec", revenue: 720000 },
-  ],
+  "This Week": revenueData,
+  "This Month": revenueData,
+  "This Year": revenueData,
 };
   return (
     <div className="min-h-screen bg-slate-50 p-4 md:p-6">

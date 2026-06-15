@@ -6,137 +6,108 @@ import {
   Utensils,
   Star,
   Settings,
-  Home,LogOut ,
-   Building2,
-     X,
-       BedDouble,
-UserCircle ,
+  Home,
+  LogOut,
+  X,
+  UserCircle,
+  CreditCard,
+  UserCheck,
+  MessageSquareWarning,
+  FileText,
+  BedDouble,
 } from "lucide-react";
 
-export default function Sidebar({
-  page,
-  setPage,
-  collapsed,
-  setCollapsed
-}) {
-  
+const NAV_GROUPS = [
+  {
+    label: "Main",
+    items: [
+      { key: "dashboard",     icon: LayoutDashboard,       label: "Dashboard" },
+    ],
+  },
+  {
+    label: "Rooms",
+    items: [
+      { key: "rooms",         icon: Bed,                   label: "Room Management" },
+      { key: "roomAllocation",icon: BedDouble,             label: "Room Allocation" },
+    ],
+  },
+  {
+    label: "Residents",
+    items: [
+      { key: "residents",     icon: Users,                 label: "Residents" },
+      { key: "profile",       icon: UserCircle,            label: "Resident Profile" },
+      { key: "vacatedResident",icon: LogOut,               label: "Vacated Residents" },
+    ],
+  },
+  {
+    label: "Operations",
+    items: [
+      { key: "attendance",    icon: ClipboardList,         label: "Attendance" },
+      { key: "food",          icon: Utensils,              label: "Food Management" },
+      { key: "payments",      icon: CreditCard,            label: "Payments" },
+      { key: "visitors",      icon: UserCheck,             label: "Visitors" },
+    ],
+  },
+  {
+    label: "More",
+    items: [
+      { key: "complaints",    icon: MessageSquareWarning,  label: "Complaints" },
+      { key: "documents",     icon: FileText,              label: "Documents" },
+      { key: "reviews",       icon: Star,                  label: "Reviews" },
+      { key: "settings",      icon: Settings,              label: "Settings" },
+    ],
+  },
+];
+
+export default function Sidebar({ page, setPage, collapsed, setCollapsed }) {
   return (
-   <aside
-  className={`sidebar ${
-    collapsed ? "collapsed" : ""
-  }`}
->
+    <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
 
-<div className="mobile-close">
-  <X
-    size={24}
-    onClick={() => setCollapsed(true)}
-  />
-</div>
+      {/* Mobile close button */}
+      <div className="mobile-close">
+        <X size={24} onClick={() => setCollapsed(true)} />
+      </div>
 
-<div className="sidebar-logo">
+      {/* Logo */}
+      <div className="sidebar-logo">
+        <div className="logo-icon">
+          <Home size={22} />
+        </div>
+        {!collapsed && (
+          <div className="logo-text">
+            <h2>Hostel</h2>
+            <p>Management</p>
+          </div>
+        )}
+      </div>
 
-  <div className="logo-icon">
-   <Home size={22} />
-  </div>
-
-  {!collapsed && (
-    <div className="logo-text">
-      <h2>Hostel</h2>
-      <p>Management</p>
-    </div>
-  )}
-
-</div>
+      {/* Nav */}
       <div className="sidebar-menu">
-        <div
-  title="Dashboard"
-  className={`sidebar-item ${page === "dashboard" ? "active" : ""}`}
-  onClick={() => setPage("dashboard")}
->
-  <LayoutDashboard size={20} />
-  {!collapsed && <span>Dashboard</span>}
-</div>
-
-        <div
-  title="Room Management"
-  className={`sidebar-item ${page === "rooms" ? "active" : ""}`}
-  onClick={() => setPage("rooms")}
->
-  <Bed size={20} />
-  {!collapsed && <span>Room Management</span>}
-</div>
-<div
-  title="Student Management"
-  className={`sidebar-item ${page === "student" ? "active" : ""}`}
-  onClick={() => setPage("student")}
->
-  <Users size={20} />
-  {!collapsed && <span>Resident Management</span>}
-</div>
-<div
-  title="My Profile"
-  className={`sidebar-item ${
-    page === "profile" ? "active" : ""
-  }`}
-  onClick={() => setPage("profile")}
->
-  <UserCircle size={20} />
-  {!collapsed && <span>Resident Dashboard</span>}
-</div>
-<div
-  title="Residents"
-  className={`sidebar-item ${
-    page === "residents" ? "active" : ""
-  }`}
-  onClick={() => setPage("residents")}
->
-  <Home size={20} />
-  {!collapsed && <span>Residents</span>}
-</div>
-<div
-  title="Vacated Resident"
-  className={`sidebar-item ${
-    page === "vacatedResident" ? "active" : ""
-  }`}
-  onClick={() => setPage("vacatedResident")}
->
-  <LogOut size={20} />
-  {!collapsed && <span>Vacated Resident</span>}
-</div>
-<div
-  title="Attendance"
-  className={`sidebar-item ${page === "attendance" ? "active" : ""}`}
-  onClick={() => setPage("attendance")}
->
-  <ClipboardList size={20} />
-  {!collapsed && <span>Attendance</span>}
-</div><div
-  title="Food Management"
-  className={`sidebar-item ${page === "food" ? "active" : ""}`}
-  onClick={() => setPage("food")}
->
-  <Utensils size={20} />
-  {!collapsed && <span>Food Management</span>}
-</div>
-
-       <div
-  title="Reviews"
-  className={`sidebar-item ${page === "reviews" ? "active" : ""}`}
-  onClick={() => setPage("reviews")}
->
-  <Star size={20} />
-  {!collapsed && <span>Reviews</span>}
-</div>
-
-     <div
-  title="Settings"
-  className={`sidebar-item ${page === "settings" ? "active" : ""}`}
-  onClick={() => setPage("settings")}
->
-  <Settings size={20} />
-  {!collapsed && <span>Settings</span>}
-</div>
+        {NAV_GROUPS.map((group) => (
+          <div key={group.label}>
+            {/* Group label — only show when expanded */}
+            {!collapsed && (
+              <p className="px-3 pt-4 pb-1 text-[10px] font-semibold uppercase tracking-widest text-slate-400 select-none">
+                {group.label}
+              </p>
+            )}
+            {group.items.map(({ key, icon: Icon, label }) => (
+              <div
+                key={key}
+                title={label}
+                className={`sidebar-item ${page === key ? "active" : ""}`}
+                onClick={() => {
+                  setPage(key);
+                  // auto-close on mobile
+                  if (window.innerWidth <= 768) setCollapsed(true);
+                }}
+              >
+                <Icon size={20} />
+                {!collapsed && <span>{label}</span>}
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </aside>
   );
