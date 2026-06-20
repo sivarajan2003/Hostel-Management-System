@@ -11,7 +11,7 @@ import {
   CheckCircle,
   LogOut,
 } from "lucide-react";
-
+import { complaintsApi } from "../utils/api";
 export default function ResidentDashboard() {
   const [status, setStatus] = useState("In PG");
 
@@ -57,6 +57,17 @@ const [selectedPlan, setSelectedPlan] =
 
 const [paymentSuccess, setPaymentSuccess] =
   useState(false);
+  const [showComplaintPopup, setShowComplaintPopup] = useState(false);
+
+const [complaintForm, setComplaintForm] = useState({
+  resident_name: "Arun Kumar",
+  room_no: "A-101",
+  complaint_type: "",
+  title: "",
+  description: "",
+});
+const [complaintSuccess, setComplaintSuccess] =
+useState(false);
   return (
     <div className="p-4 md:p-6 bg-slate-50 min-h-screen">
      {/* Header */}
@@ -282,6 +293,21 @@ const [paymentSuccess, setPaymentSuccess] =
 <div className="bg-white rounded-3xl p-6 shadow-sm mt-6">
 
   <h2 className="text-lg font-semibold mb-4">
+    Complaints
+  </h2>
+
+  <button
+    onClick={() => setShowComplaintPopup(true)}
+    className="bg-red-600 text-white px-5 py-3 rounded-xl"
+  >
+    Raise Complaint
+  </button>
+
+</div>
+
+<div className="bg-white rounded-3xl p-6 shadow-sm mt-6">
+
+  <h2 className="text-lg font-semibold mb-4">
     Rent Fee Plans
   </h2>
 
@@ -356,6 +382,25 @@ const [paymentSuccess, setPaymentSuccess] =
   </div>
 
 </div>
+<div className="bg-white rounded-3xl p-6 shadow-sm mt-6">
+
+  <h2 className="text-lg font-semibold mb-4">
+    Complaint Updates
+  </h2>
+
+  <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+
+    Complaint:
+    Water Leakage
+
+    <br />
+
+    Status:
+    In Progress
+
+  </div>
+
+</div>
       {/* Activity */}
       {/* Activity */}
 <div className="bg-white rounded-3xl p-6 shadow-sm mt-6">
@@ -402,6 +447,124 @@ const [paymentSuccess, setPaymentSuccess] =
   </div>
 
 </div>
+{showComplaintPopup && (
+<div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+
+<div className="bg-white rounded-3xl p-6 w-[95%] max-w-lg">
+
+<h2 className="text-xl font-semibold mb-4">
+Raise Complaint
+</h2>
+
+<div className="space-y-4">
+
+<input
+type="text"
+value={complaintForm.resident_name}
+readOnly
+className="w-full border p-3 rounded-xl"
+/>
+
+<input
+type="text"
+value={complaintForm.room_no}
+readOnly
+className="w-full border p-3 rounded-xl"
+/>
+
+<select
+className="w-full border p-3 rounded-xl"
+onChange={(e)=>
+setComplaintForm({
+...complaintForm,
+complaint_type:e.target.value
+})
+}
+>
+<option>Select Complaint Type</option>
+<option>Water Leakage</option>
+<option>Electricity</option>
+<option>WiFi</option>
+<option>Food Issue</option>
+<option>Cleaning</option>
+<option>Other</option>
+</select>
+
+<input
+type="text"
+placeholder="Complaint Title"
+className="w-full border p-3 rounded-xl"
+onChange={(e)=>
+setComplaintForm({
+...complaintForm,
+title:e.target.value
+})
+}
+/>
+
+<textarea
+rows="4"
+placeholder="Complaint Description"
+className="w-full border p-3 rounded-xl"
+onChange={(e)=>
+setComplaintForm({
+...complaintForm,
+description:e.target.value
+})
+}
+/>
+
+</div>
+
+<div className="flex justify-end gap-3 mt-5">
+
+<button
+onClick={() => setShowComplaintPopup(false)}
+className="border px-5 py-2 rounded-xl"
+>
+Cancel
+</button>
+
+<button
+onClick={async () => {
+  try {
+if (
+  !complaintForm.complaint_type ||
+  !complaintForm.title ||
+  !complaintForm.description
+) {
+  alert("Please fill all fields");
+  return;
+}
+    await complaintsApi.create(complaintForm);
+
+    alert("Complaint submitted successfully ✅");
+
+    setShowComplaintPopup(false);
+
+    setComplaintForm({
+      resident_name: "Arun Kumar",
+      room_no: "A-101",
+      complaint_type: "",
+      title: "",
+      description: "",
+    });
+
+  } catch (err) {
+  console.log(err);
+  alert(err.message);
+}
+}}
+className="bg-red-600 text-white px-5 py-2 rounded-xl"
+>
+Submit
+</button>
+</div>
+
+</div>
+
+</div>
+)}
 
 {showPaymentPopup && (
   <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">

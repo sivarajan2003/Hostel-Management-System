@@ -315,8 +315,8 @@ export default function ResidentsManagement({ setSelectedResident }) {
 
       {/* ═══════════ ADD RESIDENT MODAL ═══════════ */}
       {showAdd && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl">
+        <div className="fixed inset-0 bg-black/30 flex items-start justify-center z-50 pt-16 px-4">
+          <div className="bg-white rounded-3xl w-full max-w-4xl max-h-[85vh] flex flex-col shadow-2xl">
 
             {/* Modal header */}
             <div className="px-6 py-5 border-b flex items-center justify-between">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Star } from "lucide-react";
-
+import { reviewsApi } from "../utils/api";
 export default function FoodReviewForm() {
   const [rating, setRating] = useState(0);
 
@@ -13,32 +13,30 @@ const [reviewData, setReviewData] = useState({
 });
 
 const [successMessage, setSuccessMessage] = useState("");
-const handleSubmit = () => {
-  if (
-    !reviewData.studentName ||
-    !reviewData.className ||
-    !reviewData.section ||
-    !reviewData.review ||
-    rating === 0
-  ) {
-    alert("Please fill all fields");
-    return;
+const handleSubmit = async () => {
+  try {
+    await reviewsApi.create({
+      resident_name: reviewData.residentName,
+      room_no: reviewData.roomNo,
+      food_type: reviewData.foodType,
+      rating,
+      review: reviewData.review,
+    });
+
+    alert("Review Submitted");
+
+    setReviewData({
+      residentName: "",
+      roomNo: "",
+      foodType: "",
+      review: "",
+    });
+
+    setRating(0);
+
+  } catch (err) {
+    console.log(err);
   }
-
-  setSuccessMessage("✅ Your review has been submitted successfully!");
-
-  setReviewData({
-    studentName: "",
-    className: "",
-    section: "",
-    review: "",
-  });
-
-  setRating(0);
-
-  setTimeout(() => {
-    setSuccessMessage("");
-  }, 3000);
 };
   return (
    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 mt-6">

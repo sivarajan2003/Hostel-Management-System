@@ -1,32 +1,63 @@
-import { useState } from "react";
+//documente.jsx
+import { useState, useEffect } from "react";
 import { FileText, Download, Eye, X } from "lucide-react";
+import { documentsApi } from "../utils/api";
 
 export default function Documents() {
   const [showUpload, setShowUpload] = useState(false);
 const [viewDoc, setViewDoc] = useState(null);
-
-const [documents, setDocuments] = useState([
-  {
-    id: 1,
-    resident: "Arun Kumar",
-    type: "Aadhaar",
-    fileName: "Aadhaar.pdf",
-    fileUrl: "/docs/aadhaar.pdf",
-  },
-  {
-    id: 2,
-    resident: "Hari Prasad",
-    type: "PAN",
-    fileName: "PAN.pdf",
-    fileUrl: "/docs/pan.pdf",
-  },
-]);
-
+const [documents, setDocuments] = useState([]);
 const [newDoc, setNewDoc] = useState({
   resident: "",
   type: "",
   file: null,
 });
+//const [documents, setDocuments] = useState([]);
+
+
+useEffect(() => {
+  loadDocuments();
+}, []);
+
+const loadDocuments = async () => {
+  try {
+    const data = await documentsApi.getAll();
+    setDocuments(data);
+  } catch {
+    console.log("Failed");
+  }
+};
+const handleSave = async () => {
+  try {
+    const formData = new FormData();
+
+    formData.append(
+      "resident_name",
+      newDoc.resident
+    );
+
+    formData.append(
+      "document_type",
+      newDoc.type
+    );
+
+    formData.append(
+      "file",
+      newDoc.file
+    );
+
+    await documentsApi.create(formData);
+
+    await loadDocuments();
+
+    setShowUpload(false);
+
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
   return (
     <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
 
@@ -63,11 +94,11 @@ const [newDoc, setNewDoc] = useState({
 
         <div>
           <h3 className="text-sm font-semibold text-slate-800">
-            {doc.resident}
+          {doc.resident_name}
           </h3>
 
           <p className="text-xs text-slate-500">
-            {doc.fileName}
+            {doc.file_name}
           </p>
         </div>
 
@@ -82,11 +113,15 @@ const [newDoc, setNewDoc] = useState({
           <Eye size={16} />
         </button>
 
-        <a
-          href={doc.fileUrl}
-          download={doc.fileName}
+        {/* <a
+          href={doc.file_url}
+download={doc.file_name}
           className="p-2 bg-slate-100 rounded-lg hover:bg-slate-200"
-        >
+        > */}
+<a
+  href={`http://10.179.45.158:4000${doc.file_url}`}
+  download={doc.file_name}
+>
           <Download size={16} />
         </a>
 
@@ -106,7 +141,7 @@ const [newDoc, setNewDoc] = useState({
       <div className="flex justify-between items-center mb-4">
 
         <h2 className="text-lg font-semibold text-slate-800">
-          {viewDoc.fileName}
+         {viewDoc.file_name}
         </h2>
 
         <button
@@ -117,12 +152,11 @@ const [newDoc, setNewDoc] = useState({
 
       </div>
 
-      <iframe
-        src={viewDoc.fileUrl}
-        className="w-full h-[500px] rounded-xl border"
-        title="Document Preview"
-      />
-
+     <iframe
+  src={`http://10.179.45.158:4000${viewDoc.file_url}`}
+  className="w-full h-[500px] rounded-xl border"
+  title="Document Preview"
+/>
     </div>
 
   </div>
@@ -190,29 +224,11 @@ const [newDoc, setNewDoc] = useState({
         </button>
 
         <button
-          onClick={() => {
-            const document = {
-              id: Date.now(),
-              resident: newDoc.resident,
-              type: newDoc.type,
-              fileName: newDoc.file?.name,
-              fileUrl: URL.createObjectURL(
-                newDoc.file
-              ),
-            };
-
-            setDocuments([
-              ...documents,
-              document,
-            ]);
-
-            setShowUpload(false);
-          }}
-          className="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl"
-        >
-          Save
-        </button>
-
+  onClick={handleSave}
+  className="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-xl"
+>
+  Save
+</button>
       </div>
 
     </div>

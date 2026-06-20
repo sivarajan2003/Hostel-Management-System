@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Coffee, Utensils, Cookie, Soup, Star, Plus, Trash2 } from "lucide-react";
 import { foodApi } from "../utils/api";
 import { message } from "antd";
-
+import { reviewsApi } from "../utils/api";
 const COLORS = ["bg-orange-50", "bg-blue-50", "bg-green-50", "bg-yellow-50", "bg-pink-50", "bg-purple-50", "bg-red-50", "bg-indigo-50"];
 
 export default function FoodManagement() {
@@ -10,7 +10,7 @@ export default function FoodManagement() {
   const [loading, setLoading] = useState(true);
   const [showMenuPopup, setShowMenuPopup] = useState(false);
   const [menuData, setMenuData] = useState({ meal: "", time: "", menu: "", color: "bg-blue-50" });
-
+const [reviews, setReviews] = useState([]);
   const fetchSchedule = async () => {
     try {
       setLoading(true);
@@ -49,7 +49,18 @@ export default function FoodManagement() {
       message.error("Failed to delete item");
     }
   };
+const loadReviews = async () => {
+  try {
+    const data = await reviewsApi.getAll();
+    setReviews(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
+useEffect(() => {
+  loadReviews();
+}, []);
   return (
     <div className="min-h-screen bg-slate-50 p-6">
       {/* Header */}
@@ -151,21 +162,38 @@ export default function FoodManagement() {
       <div className="mt-8">
         <h2 className="text-lg font-semibold mb-4">Student Food Reviews</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {[
-            { name: "Arun Kumar", rating: 5, comment: "Breakfast quality was excellent." },
-            { name: "Karthik", rating: 4, comment: "Lunch was very tasty and fresh." },
-            { name: "Praveen", rating: 3, comment: "Need more snack varieties." },
-          ].map(({ name, rating, comment }) => (
-            <div key={name} className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
-              <div className="flex items-center gap-1 mb-3">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <Star key={i} size={16} className={i < rating ? "text-yellow-500 fill-yellow-500" : "text-slate-200 fill-slate-200"} />
-                ))}
-              </div>
-              <h3 className="text-sm font-semibold">{name}</h3>
-              <p className="text-sm text-slate-500 mt-1">{comment}</p>
-            </div>
-          ))}
+          {reviews.map((item) => (
+  <div
+    key={item.id}
+    className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200"
+  >
+    <div className="flex items-center gap-1 mb-3">
+      {Array.from({ length: 5 }, (_, i) => (
+        <Star
+          key={i}
+          size={16}
+          className={
+            i < item.rating
+              ? "text-yellow-500 fill-yellow-500"
+              : "text-slate-200 fill-slate-200"
+          }
+        />
+      ))}
+    </div>
+
+    <h3 className="text-sm font-semibold">
+      {item.resident_name}
+    </h3>
+
+    <p className="text-xs text-slate-500">
+      {item.food_type}
+    </p>
+
+    <p className="text-sm text-slate-500 mt-2">
+      {item.review}
+    </p>
+  </div>
+))}
         </div>
       </div>
 

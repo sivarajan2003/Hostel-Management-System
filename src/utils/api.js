@@ -96,7 +96,106 @@ export const paymentsApi = {
   updateStatus: (id, status) =>
     request("PATCH", `${BASE}/payments/${id}/status`, { status }),
 };
+// ── documents ───────────────────────────────────────────────
+export const documentsApi = {
+  getAll: () =>
+    request("GET", `${BASE}/documents`),
 
+  remove: (id) =>
+    request("DELETE", `${BASE}/documents/${id}`),
+
+  create: async (formData) => {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(
+      `${BASE}/documents`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(
+        data?.message || "Upload failed"
+      );
+    }
+
+    return data?.data ?? data;
+  },
+};
+//reviews
+export const reviewsApi = {
+  getAll: () =>
+    request("GET", `${BASE}/reviews`),
+
+  create: (data) =>
+    request("POST", `${BASE}/reviews`, data),
+};
+//complaint
+// export const complaintsApi = {
+
+//   getAll: (params = {}) => {
+
+//     const q =
+//       new URLSearchParams(
+//         params
+//       ).toString();
+
+//     return request(
+//       "GET",
+//       `${BASE}/complaints${q ? "?" + q : ""}`
+//     );
+//   },
+
+//   create: (data) =>
+//     request(
+//       "POST",
+//       `${BASE}/complaints`,
+//       data
+//     ),
+
+//   updateStatus: (
+//     id,
+//     status
+//   ) =>
+//     request(
+//       "PATCH",
+//       `${BASE}/complaints/${id}/status`,
+//       { status }
+//     ),
+// };
+export const complaintsApi = {
+
+getAll: (params = {}) => {
+const q = new URLSearchParams(params).toString();
+
+return request(
+"GET",
+`${BASE}/complaints${q ? "?" + q : ""}`
+);
+},
+
+create: (data) =>
+request(
+"POST",
+`${BASE}/complaints`,
+data
+),
+
+updateStatus: (id, status) =>
+request(
+"PATCH",
+`${BASE}/complaints/${id}/status`,
+{ status }
+),
+
+};
 // ── Visitors ───────────────────────────────────────────────
 export const visitorsApi = {
   getAll: (params = {}) => {
